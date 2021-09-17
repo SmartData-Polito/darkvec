@@ -5,34 +5,36 @@ ___
 
 ### Notebooks
 The snippets of the experiment discussed in the paper are reported in the 
-following notebooks in the main folder:
+following notebooks in the main folder: 
+
     * `01-darknet-overview.ipynb`: jupyter notebook performing the darknet 
-    characterization reported in the paper;
+    characterization reported in the paper; 
     * `02-grid-search.ipynb`: experiments performed during the DarkVec grid 
-    search;
+    search; 
     * `03-clustering.ipynb`: unsupervised clustering algorithms and results of
-    the manual clusters inspection;
+    the manual clusters inspection; 
     * `A01-corpus-generation.ipynb`: Appendix1. Codes used for generating the
-    corpus of the experiments. It runs is designed to run on Spark;
+    corpus of the experiments. It runs is designed to run on Spark; 
     * `A02-model-training.ipynb`: Appendix2. Training of the models used in the
-    paper;
+    paper; 
     * `A03-darknet-interim`: Appendix3. Some intermediate preprocessing. To 
     reduce the notebooks runtime, we save intermediate dataframes and load them
     instead of recomputing them. In this notebook, user can observe and repeat
-    such preprocessing.
+    such preprocessing. 
 
 ### `src` Folder
-Python libraries and utilities designed for the experiments:
+Python libraries and utilities designed for the experiments: 
+
     * `callbacks.py`: fastplot callbacks for generating the figures of the 
-    paper;
+    paper; 
     * `knngraph.py`: implementation of the k-nearest-neighbor-graph described
-    in the paper;
-    * `utils.py`: some utility functions;
+    in the paper; 
+    * `utils.py`: some utility functions; 
 
 ### Configuration file `config.py`
 For running the experiments, it could be necessary to change the global paths
 managing the files. In this case, it should be sufficient to replace the 
-following:
+following: 
 
 ```
 # global path of the raw traces
@@ -40,7 +42,7 @@ TRACES
 
 # global path of the data folder
 DATA 
-```
+``` 
 
 for the other parameters see the `config.py` file.
 
@@ -55,21 +57,24 @@ It contains all the corpora generated for the experiments. A part from the
 IP2VEC case, a corpus is a set of .txt files reporting a sequence of IPs wrt.
 different languages, or classes of service. 
 
-The corpora we provide are:
-    * `dante5`. Last 5 days of collected traffic used in the DANTE paper;
+The corpora we provide are: 
+
+    * `dante5`. Last 5 days of collected traffic used in the DANTE paper; 
     * `darkvec30auto`. Last 30 days of collected traffic used in the DarkVec 
-    experiments. Auto-defined languages;
+    experiments. Auto-defined languages; 
     * `darkvec30single`. Last 30 days of collected traffic used in the DarkVec 
-    experiments. Single language;
+    experiments. Single language; 
     * `darkvec30xserv`. Last 30 days of collected traffic used in the DarkVec 
-    experiments. Per-service languages;
+    experiments. Per-service languages; 
     * `darkvec5xserv`. Last 5 days of collected traffic used in the DarkVec 
-    experiments. Per-service languages;
-    * `ip2vec5`. Last 5 days of collected traffic used in the IP2VEC paper.
+    experiments. Per-service languages; 
+    * `ip2vec5`. Last 5 days of collected traffic used in the IP2VEC paper. 
+
     
 ### `datasets` Folder
-It contains all the intermediate preprocessing. Namely:
-    * `darknet.csv.gz`: full 30 days of unfiltered darknet traffic;
+It contains all the intermediate preprocessing. Namely: 
+
+    * `darknet.csv.gz`: full 30 days of unfiltered darknet traffic; 
     * `darknet_d5.csv.gz`: last 5 days of unfiltered darknet traffic;
     * `embeddings_ip2vec.csv.gz`: embeddings generated thrugh the IP2VEC 
     methodology after 5 days of training;
