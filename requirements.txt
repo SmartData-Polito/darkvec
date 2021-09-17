@@ -1,0 +1,7 @@
+gensim
+sklearn
+pandas
+numpy
+kneed
+networkx
+python-louvain
