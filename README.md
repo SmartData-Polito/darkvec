@@ -1,9 +1,32 @@
 # <b>DarkVec: Automatic Analysis of Darknet Trafficwith Word Embeddings</b>
 
-___
-## Project Structure
+## <b>Table Of Content</b> <a id='toc'></a>
 
-### Notebooks
+* [Project Structure](#proj)
+    * [Notebooks](#notebook)
+    * [`src` Folder](#src)
+    * [Configuration File `config.py`](#config)
+* [Data Description](#data)
+    * [`corpus` Folder](#corpus)
+    * [`datasets` Folder](#dataset)
+    * [`gridsearch` Folder](#gridsearch)
+    * [`groundtruth` Folder](#groundtruth)
+    * [`models` Folder](#models)
+    * [`services` Folder](#services)
+* [Documentation](#doc)
+    * [`src.callbacks`](#srccallbacks)
+    * [`src.knngraph`](#srcknngraph)
+    * [`src.utils`](#srcutils)
+
+___
+## <b>Project Structure</b> <a id='proj'></a>
+
+[Back to index](#toc)
+
+### Notebooks <a id='notebook'></a>
+
+[Back to index](#toc)
+
 The snippets of the experiment discussed in the paper are reported in the 
 following notebooks in the main folder: 
 
@@ -22,7 +45,11 @@ reduce the notebooks runtime, we save intermediate dataframes and load them
 instead of recomputing them. In this notebook, user can observe and repeat
 such preprocessing. 
 
-### `src` Folder
+### `src` Folder <a id='src'></a>
+
+[Back to index](#toc)
+
+
 Python libraries and utilities designed for the experiments: 
 
 * `callbacks.py`: fastplot callbacks for generating the figures of the 
@@ -31,7 +58,11 @@ paper;
 in the paper; 
 * `utils.py`: some utility functions; 
 
-### Configuration file `config.py`
+### Configuration File `config.py` <a id='config'></a>
+
+[Back to index](#toc)
+
+
 For running the experiments, it could be necessary to change the global paths
 managing the files. In this case, it should be sufficient to replace the 
 following: 
@@ -48,11 +79,19 @@ for the other parameters see the `config.py` file.
 
 
 ___
-## Data Description
+## <b>Data Description</b> <a id='data'></a>
+
+[Back to index](#toc)
+
+
 All the raw and final data and intermediate preprocessing. They are stored in 
 the `DATA` folder of the configuration file. 
 
-### `corpus` Folder 
+### `corpus` Folder <a id='corpus'></a>
+
+[Back to index](#toc)
+
+
 It contains all the corpora generated for the experiments. A part from the 
 IP2VEC case, a corpus is a set of .txt files reporting a sequence of IPs wrt.
 different languages, or classes of service. 
@@ -71,7 +110,11 @@ experiments. Per-service languages;
 * `ip2vec5`. Last 5 days of collected traffic used in the IP2VEC paper. 
 
     
-### `datasets` Folder
+### `datasets` Folder <a id='datasets'></a>
+
+[Back to index](#toc)
+
+
 It contains all the intermediate preprocessing. Namely: 
 
 * `darknet.csv.gz`: full 30 days of unfiltered darknet traffic; 
@@ -93,7 +136,11 @@ Each key indicates a day:
     - `d1_u`: last day unfiltered;
     - `d1_f30`: last day filtered over 30 days;
 
-### `gridsearch` Folder 
+### `gridsearch` Folder <a id='gridsearch'></a>
+
+[Back to index](#toc)
+
+
 It collects the output of different experiments. They are used to generate the
 plots faster than recomputing the results. By running the notebooks it is 
 possible to re-create what is in this folder:
@@ -105,14 +152,22 @@ testing of k for the knn graph;
 * `knn_k.csv`: results of the grid search for k f the knn classifier;
 * `training_runtime.csv` # TODO
 
-### `groundtruth` Folder
+### `groundtruth` Folder <a id='groundtruth'></a>
+
+[Back to index](#toc)
+
+
 It contains the gorund truth we generated in `lsground_truth_full.csv.gz`. It 
 is a collection of IP addresses with the respective label. The label may be 
 like `sonar` if the IP belongs to the Project Sonar, `shodan` if it belongs to 
 the Shodan pool.  
 
 
-### `models` Folder
+### `models` Folder <a id='models'></a>
+
+[Back to index](#toc)
+
+
 Model trained during the experiments of the paper. The model names are 
 related to the parameters `C`, or context window size, and `V` or embeddings
 size. Namely, they are:
@@ -127,21 +182,37 @@ languages;
 * `ip2vec5embedder`: keras embedder generated through our implementation 
 following the IP2VEC paper.
 
-#### `services` Folder
+#### `services` Folder <a id='services'></a>
+
+[Back to index](#toc)
+
+
 It reports the `services.json` file. It is a dictionary for the conversion of
 the port/protocol pairs of a received packets to a class of services, or 
 language.
 
 
 ___
-## Documentation
+## <b>Documentation</b> <a id='doc'></a>
 
-## `src.callbacks`
+[Back to index](#toc)
+
+
+## `src.callbacks` <a id='srccallbacks'></a>
+
+[Back to index](#toc)
+
 Callbacks docstring
 
-## `src.knngraph`
+## `src.knngraph` <a id='srcknngraph'></a>
+
+[Back to index](#toc)
+
 KNN graph docstring
 
-## `src.utils`
+## `src.utils` <a id='srcutils'></a>
+
+[Back to index](#toc)
+
 Utils docstring
 
