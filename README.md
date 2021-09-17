@@ -1,4 +1,4 @@
-# <b>DarkVec: Automatic Analysis of Darknet Trafficwith Word Embeddings</b>
+# <b>DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings</b>
 
 ## <b>Table Of Content</b> <a id='toc'></a>
 
