@@ -556,8 +556,8 @@ KnnGraph(graph_path=None,
 	graph_gen=False,
 	k=4,
 	embeddings=None,
-	
-
+    ips=None, 
+    labels=None)
 ```
  
 Implementation of the k-Nearest-Neighbors Graph with the Louvain      algorithm application for cluster detection.           The module builds a Graph from a set of embeddings. The nodes are the IPs,      and the link among two nodes exists if they belongs to the same      k-neighborhood. The edges weights are the cosine similarity among the nodes     pairs.            The Louvain algorithm is applied and the cluster id of each node is saved      as the attribute `community`.   
