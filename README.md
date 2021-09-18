@@ -202,7 +202,334 @@ ___
 
 [Back to index](#toc)
 
-Callbacks docstring
+Fastplot callback for generating all the figures reported both in the paper and notebooks.  
+
+___
+
+```
+fig1a(plt, pkts, top)
+```
+
+ 
+Fastplot callback for generating Fig.1a of the paper.      Port ranking. Zoom on top-14 ports.  Fastplot callback for generating Fig.1a of the paper. Port ranking. Zoom on top-14 ports. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **pkts** *(pandas.DataFrame)*: ECDF of packets per port<br> 
+
+- **top** *(pandas.DataFrame)*: 
+
+___
+
+```
+fig1b(plt, tday)
+```
+
+
+ 
+Fastplot callback for generating Fig.1b of the paper.     Sender’s activity pattern.      Fastplot callback for generating Fig.1b of the paper.  Sender’s activity pattern. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **tday** *(pandas.DataFrame)*: timeseries of the ips activeness
+
+___
+
+```
+fig2a(plt, cdf)
+```
+
+
+ 
+Fastplot callback for generating Fig.2a of the paper.     Amount of packets per sender in 1 month.  Fastplot callback for generating Fig.2a of the paper.  Amount of packets per sender in 1 month. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **cdf** *(pandas.DataFrame)*: packets per senders over a month
+
+___
+
+```
+fig2b(plt, cdf, cdf_f)
+```
+
+
+ 
+Fastplot callback for generating Fig.2b of the paper.     Cumulative number of senders over time.      Fastplot callback for generating Fig.2b of the paper.  Cumulative number of senders over time. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **cdf** *(pandas.DataFrame)*: cumulative sum of senders over time unfiltered<br> 
+
+- **cdf_f** *(pandas.DataFrame)*: cumulative sum of senders over time filtered over 30 days
+
+___
+
+```
+fig8a(plt, stretchoid)
+```
+
+
+ 
+Fastplot callback for generating Fig.8a of the paper.     Stretchoid activity pattern.  Fastplot callback for generating Fig.8a of the paper.  Stretchoid activity pattern. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **stretchoid** *(pandas.DataFrame)*: sequence of packets per source IP belonging to Stretchoid GT class
+
+___
+
+```
+fig8b(plt, en_um)
+```
+
+
+ 
+Fastplot callback for generating Fig.8b of the paper.     Engin-Umich activity pattern.  Fastplot callback for generating Fig.8b of the paper.  Engin-Umich activity pattern. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **en_um** *(pandas.DataFrame)*: 
+
+___
+
+```
+fig5(plt, gs_train_window)
+```
+
+
+ 
+Fastplot callback for generating Fig.5 of the paper.     Impact of training window length.  Fastplot callback for generating Fig.5 of the paper.  Impact of training window length. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **gs_train_window** *(pandas.DataFrame)*: results of the experments abount the training window lenght
+
+___
+
+```
+fig6(plt, knn_accs)
+```
+
+
+ 
+Fastplot callback for generating Fig.6 of the paper.     Impact of k on the k-NN classifier.      Fastplot callback for generating Fig.6 of the paper.  Impact of k on the k-NN classifier. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **knn_accs** *(dict)*: results of the experiments for the impact of classifier k
+
+___
+
+```
+fig7a1(plt, heatmaps, Vs, Cs)
+```
+
+
+ 
+Fastplot callback for generating the first part of Fig.7a of the paper.     Auto-defined models, grid search through accuracy.      Fastplot callback for generating the first part of Fig.7a of the paper.  Auto-defined models, grid search through accuracy. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **heatmaps** *(list)*: heatmaps resulting from the grid search. Knn classifier accuracy<br> 
+
+- **Vs** *(list)*: embedding sizes Vs tested during the grid search<br> 
+
+- **Cs** *(list)*: context window sizes Cs tested during the grid search
+
+___
+
+```
+fig7a2(plt, heatmaps_time, Vs, Cs)
+```
+
+
+ 
+Fastplot callback for generating the second part of Fig.7a of the paper.     Auto-defined models, grid search through model training runtime.  Fastplot callback for generating the second part of Fig.7a of the paper.  Auto-defined models, grid search through model training runtime. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **heatmaps_time** *(list)*: heatmaps resulting from the grid search. Training runtimes<br> 
+
+- **Vs** *(list)*: embedding sizes Vs tested during the grid search<br> 
+
+- **Cs** *(list)*: context window sizes Cs tested during the grid search
+
+___
+
+```
+fig7b1(plt, heatmaps, Vs, Cs)
+```
+
+
+ 
+Fastplot callback for generating the first part of Fig.7b of the paper.     Per-service models, grid search through accuracy.      Fastplot callback for generating the first part of Fig.7b of the paper.  Per-service models, grid search through accuracy. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **heatmaps** *(list)*: heatmaps resulting from the grid search. Knn classifier accuracy<br> 
+
+- **Vs** *(list)*: embedding sizes Vs tested during the grid search<br> 
+
+- **Cs** *(list)*: context window sizes Cs tested during the grid search
+
+___
+
+```
+fig7b2(plt, heatmaps_time, Vs, Cs)
+```
+
+
+ 
+Fastplot callback for generating the second part of Fig.7b of the paper.     Per-service models, grid search through accuracy.  Fastplot callback for generating the second part of Fig.7b of the paper.  Per-service models, grid search through accuracy. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **heatmaps_time** *(list)*: heatmaps resulting from the grid search. Training runtimes<br> 
+
+- **Vs** *(list)*: embedding sizes Vs tested during the grid search<br> 
+
+- **Cs** *(list)*: context window sizes Cs tested during the grid search
+
+___
+
+```
+fig9(plt, ncs, mods)
+```
+
+
+ 
+Fastplot callback for generating Fig.9 of the paper.     Impact of k' in cluster detection.  Fastplot callback for generating Fig.9 of the paper.  Impact of k' in cluster detection. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **ncs** *(list)*: detected number of clusters per tested k'<br> 
+
+- **mods** *(list)*: graph modularity with the clusters as partition per tested k'
+
+___
+
+```
+fig10(plt, shs)
+```
+
+
+ 
+Fastplot callback for generating Fig.10 of the paper.     Average silhouette of points within the found clusters.  Fastplot callback for generating Fig.10 of the paper.  Average silhouette of points within the found clusters. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **shs** *(pandas.DataFrame)*: silhouette plot per cluster
+
+___
+
+```
+fig11(plt, clusters, tick)
+```
+
+
+ 
+Fastplot callback for generating Fig.11 of the paper.     Activity patterns of Censys sub-clusters.  Fastplot callback for generating Fig.11 of the paper.  Activity patterns of Censys sub-clusters. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **clusters** *(pandas.DataFrame)*: division of the ips in clusters<br> 
+
+- **tick** *(pandas.DataFrame)*: 
+
+___
+
+```
+fig12(plt, clusters)
+```
+
+
+ 
+Fastplot callback for generating Fig.12 of the paper.     Activity patterns of Shadowserver sub-clusters.  Fastplot callback for generating Fig.12 of the paper.  Activity patterns of Shadowserver sub-clusters. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **clusters** *(pandas.DataFrame)*: sequence of packets per source IP belonging to the provided clusters
+
+___
+
+```
+plot_censys_jaccard(plt, jacc)
+```
+
+
+ 
+Fastplot callback for generating the jaccard heatmap. It represents the     jaccard index between the ports contacted by the censys found sub-clusters  Fastplot callback for generating the jaccard heatmap. It represents the  jaccard index between the ports contacted by the censys found sub-clusters <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **jacc** *(pandas.DataFrame)*: jaccard matrix shaped `(n_clusters , n_clusters)`
+
+___
+
+```
+plot_generic_pattern(plt, C_)
+```
+
+
+ 
+Fastplot callback for plotting the activity patterns of a generic      provided cluster  Fastplot callback for plotting the activity patterns of a generic provided cluster <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **C_** *(pandas.DataFrame)*: activity patterns of IPs partition in clusters to test
+
+___
+
+```
+plot_port_pattern(plt, clusters_)
+```
+
+
+ 
+Fastplot callback for plotting the pattern of the ports contacted by     IPs belonging to the provided clusters.  Fastplot callback for plotting the pattern of the ports contacted by  IPs belonging to the provided clusters. <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **clusters_** *(pandas.DataFrame)*: set of destination ports timeseries per source IP
 
 ## `src.knngraph` <a id='srcknngraph'></a>
 
