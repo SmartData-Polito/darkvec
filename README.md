@@ -1,5 +1,14 @@
 # <b>DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings</b>
 
+In this artifact we report all the codes and the experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_
+___
+***Note:*** All the codes and data we provide are the ones included in the paper. All the codes can be executed. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. To speed up the notebook execution, by default we trim the file loading, however it is possible to run custom experiments. 
+
+Please, note that, according to the seed of third-party libraries, when running the codes without our intermediate files, some of the results may slightly chage. 
+
+Since the paper is still under review, we are apporting some changes, thus some of the figures and results reported in the paper might be different from the correct ones already obtained in this arctifact. 
+
+
 ## <b>Table Of Content</b> <a id='toc'></a>
 
 * [Project Structure](#proj)
@@ -18,18 +27,12 @@
     * [`src.knngraph`](#srcknngraph)
     * [`src.utils`](#srcutils)
 
-In this artifact we report all the codes and the experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_
-___
-***Note:*** All the codes and data we provide are the ones included in the paper. All the codes can be executed. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. To speed up the notebook execution, by default we trim the file loading, however it is possible to run custom experiments. 
-
-Please, note that, according to the seed of third-party libraries, when running the codes without our intermediate files, some of the results may slightly chage. 
-
-Since the paper is still under review, we are apporting some changes, thus some of the figures and results reported in the paper might be different from the correct ones already obtained in this arctifact. 
-
 ___
 ## <b>Project Structure</b> <a id='proj'></a>
 
 [Back to index](#toc)
+
+Firstly we provide an overview of the folders and data of the project.
 
 ### Notebooks <a id='notebook'></a>
 
@@ -190,7 +193,7 @@ languages;
 * `ip2vec5embedder`: keras embedder generated through our implementation 
 following the IP2VEC paper.
 
-#### `services` Folder <a id='services'></a>
+### `services` Folder <a id='services'></a>
 
 [Back to index](#toc)
 
@@ -205,6 +208,8 @@ ___
 
 [Back to index](#toc)
 
+In this section we report the documentation for the designed libraries and 
+utility functions in the `src` folder.
 
 ## `src.callbacks` <a id='srccallbacks'></a>
 
