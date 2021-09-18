@@ -535,11 +535,481 @@ Fastplot callback for plotting the pattern of the ports contacted by     IPs bel
 
 [Back to index](#toc)
 
-KNN graph docstring
+ Implementation of the k-Nearest-Neighbors Graph with the Louvain algorithm application for cluster detection. The module builds a Graph from a set of embeddings. The nodes are the IPs, and the link among two nodes exists if they belongs to the same k-neighborhood. The edges weights are the cosine similarity among the nodes pairs.  The Louvain algorithm is applied and the cluster id of each node is saved as the attribute `community`. <br>
+
+## KnnGraph
+
+___
+```
+KnnGraph(graph_path=None,
+	graph_gen=False,
+	k=4,
+	embeddings=None,
+	
+
+```
+ 
+Implementation of the k-Nearest-Neighbors Graph with the Louvain      algorithm application for cluster detection.           The module builds a Graph from a set of embeddings. The nodes are the IPs,      and the link among two nodes exists if they belongs to the same      k-neighborhood. The edges weights are the cosine similarity among the nodes     pairs.            The Louvain algorithm is applied and the cluster id of each node is saved      as the attribute `community`.   
+<br>
+
+#### Parameters<br> 
+
+- **graph_path** *(str)*, optional: global path to create a directory named as `model_name` containing the model, scalers and graphs, by default None<br> 
+
+- **graph_gen** *(bool)*, optional: if True generate a new knn graph from scratch. If False load an existing .gexf graph, by default False<br> 
+
+- **k** *(int)*, optional: number of nearest neighbors to use during the kNN graph creation. IfNone the heuristic for k is performed, by default 4<br> 
+
+- **embeddings** *(numpy.ndarray)*, optional: darkvec embeddings used to built the knn graph, by default None<br> 
+
+- **ips** *(list)*, optional: set of IPs for which the embeddings must be generated, by default None<br> 
+
+- **labels** *(list)*, optional: ground truth labels of the `ips`, by default NoneImplementation of the k-Nearest-Neighbors Graph with the Louvain algorithm application for cluster detection.  The module builds a Graph from a set of embeddings. The nodes are the IPs, and the link among two nodes exists if they belongs to the same k-neighborhood. The edges weights are the cosine similarity among the nodes  pairs. The Louvain algorithm is applied and the cluster id of each node is saved as the attribute `community`.   <br>
+
+#### Attributes<br> 
+
+- **graph_path** *(str)*: global path to create a directory named as `model_name` containing the model, scalers and graphs.<br> 
+
+- **embeddings** *(numpy.ndarray)*: darkvec embeddings used to built the knn graph.<br> 
+
+- **labels** *(list)*, optional: ground truth labels of the `ips`.<br> 
+
+- **k** *(int)*: number of nearest neighbors to use during the kNN graph creation.<br> 
+
+- **gname** *(str)*: `Gknn.gexf` where `k` is the passed value.<br> 
+
+- **mod** *(float)*: modularity value of the graph after the Louvain application.<br> 
+
+- **comms** *(dict)*: detected communities. The keys are the `ips`, the values are the id of the communities.<br> 
+
+- **nc** *(int)*: number of distinct communities.<br> 
+
+- **G** *(networkx.classes.graph.Graph))*: 
+
+___
+
+```
+    get_knn_pos(load_scaler=False, save_scaler=False)
+```
+
+<br> 
+<br> 
+<br> 
+<br>
+
+#### Returns 
+        indices and the relative distances.  
+<br>
+
+#### Parameters<br> 
+
+- **load_scaler** *(bool)*, optional: embeddings distance. If False fit a new scaler, by default False<br> 
+
+- **save_scaler** *(bool)*, optional: If True save the fitted scaler, by default Falseindices and the relative distances. <br>
+
+#### Returns<br> 
+- **(tuple)** (numpy.ndarray, numpy.ndarray). Indices of the k nearest neighbors  of each embedding; distances between the embeddings and their k  nearest neighbors.
+
+___
+
+```
+    load_graph()
+```
+
+<br> 
+ 
+Load an existing .gexf graph.  Load an existing .gexf graph. <br>
+
+#### Returns<br> 
+- **(networkx.classes.graph.Graph)**<br> 
+- **(embeddings.)**
+
+___
+
+```
+    create_graph(pos, dist)
+```
+
+<br> 
+ 
+Take the indices of the k  nearest neighbors of each embeddings and         the distances between the embeddings and their k nearest neighbors. Use         them to create a weighted k-Nearest-Neighbors Graph. The weights are          the cosine similarities among nodes (ips).  
+<br>
+
+#### Parameters<br> 
+
+- **pos** *(numpy.ndarray)*: Indices of the k nearest neighbors of each embedding.<br> 
+
+- **dist** *(numpy.ndarray)*: Distances between the embeddings and their k nearest neighbors.Take the indices of the k nearest neighbors of each embeddings and  the distances between the embeddings and their k nearest neighbors. Use  them to create a weighted k-Nearest-Neighbors Graph. The weights are the cosine similarities among nodes (ips). <br>
+
+#### Returns<br> 
+- **(networkx.classes.graph.Graph)**<br> 
+- **(embeddings.)**<br>
+
+##                 s_= self.labels[s_idx]
+
+
+___
+```
+                s_= self.labels[s_idx]
+(<br>
+
+##                     d_= self.labels[d_idx]
+
+
+___
+```
+                    d_= self.labels[d_idx]
+(
+
+___
+
+```
+    fit_predict(save_graph=False)
+```
+
+<br> 
+ 
+Run the Louvain algorithm on the knn graph finding the best nodes          partition and compute the modularity.  Run the Louvain algorithm on the knn graph finding the best nodes partition and compute the modularity. <br>
+
+#### Parameters<br> 
+
+- **save_graph** *(bool)*, optional: if True save a .gexf file compatible with Gephi, by default False
+
 
 ## `src.utils` <a id='srcutils'></a>
 
 [Back to index](#toc)
 
-Utils docstring
+
+
+___
+
+```
+get_ip_set_by_day(dnet)
+```
+
+ 
+Get the number of distinc IPs per day  
+<br>
+
+#### Parameters<br> 
+
+- **dnet** *(pandas.DataFrame)*: monthly darknet trafficGet the number of distinc IPs per day <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** distinc IPs per day
+
+___
+
+```
+get_ips_ecdf(dnet)
+```
+
+<br> 
+ 
+Get the cumulative sum of the distinct IPs per day seen over 30 days of      darknet traffic  
+<br>
+
+#### Parameters<br> 
+
+- **dnet** *(pandas.DataFrame)*: distinc IPs per dayGet the cumulative sum of the distinct IPs per day seen over 30 days of darknet traffic <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** cumulative sum of IPs per day
+
+___
+
+```
+get_last_day_stats(df, gt_class)
+```
+
+<br> 
+<br>
+
+##     provided ground truth 
+
+
+___
+```
+    provided ground truth 
+( 
+Get the number of senders, packets, ports, and the top-5 ports for the      provided ground truth   <br>
+
+##     gt_: str
+
+
+___
+```
+    gt_: str
+(<br>
+
+##         ground truth to analyze
+
+
+___
+```
+        ground truth to analyze
+(
+<br>
+
+#### Parameters<br> 
+
+- **df** *(pandas.DataFrame)*: daily grund truth dataframegt_: strground truth to analyzeGet the number of senders, packets, ports, and the top-5 ports for the provided ground truth   <br>
+
+#### Returns<br> 
+- **(tuple)** ground truth class, number of senders, number of packets, number of 
+
+___
+
+```
+load_model(mname)
+```
+
+<br> 
+ 
+Load a pre-trained DarkVec model  
+<br>
+
+#### Parameters<br> 
+
+- **mname** *(str)*: name of the modelLoad a pre-trained DarkVec model <br>
+
+#### Returns<br> 
+- **(gensim.models.word2vec.Word2Vec)** loaded darkvec model
+
+___
+
+```
+get_scaled_embeddings(dataset, model, mname, load_scaler = False)
+```
+
+<br> 
+ 
+Provide a list of IPs for which the embeddings must be extracted. Then     retrieve the embeddings from the model. Finally scale the embeddings with     a loaded pre-trained scaler or a new one  
+<br>
+
+#### Parameters<br> 
+
+- **dataset** *(pandas.DataFrame)*: source IP and ground truth class<br> 
+
+- **model** *(gensim.models.word2vec.Word2Vec)*: darkvec model<br> 
+
+- **mname** *(str)*: name of the model<br> 
+
+- **load_scaler** *(bool)*, optional: it, by default FalseProvide a list of IPs for which the embeddings must be extracted. Then  retrieve the embeddings from the model. Finally scale the embeddings with  a loaded pre-trained scaler or a new one <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** embeddings indexed by source IP
+
+___
+
+```
+split_train_test(data, with_unknown=False)
+```
+
+<br> 
+ 
+Prepare the dataset for the Leave-One-Out k-nearest-neighbor classifier.     Fit the classifier with the unkown, then choose if predicting with or      without unknown  <br>
+
+##         GT labelled samples, by default False
+
+
+___
+```
+        GT labelled samples, by default False
+(
+<br>
+
+#### Parameters<br> 
+
+- **data** *(pandas.DataFrame)*: dataset to split<br> 
+
+- **with_unknown** *(bool)*, optional: if True the test dataset has the same shape of the training since the unknown are included. Otherwise, the test dataset has only the knownGT labelled samples, by default FalsePrepare the dataset for the Leave-One-Out k-nearest-neighbor classifier.  Fit the classifier with the unkown, then choose if predicting with or without unknown <br>
+
+#### Returns<br> 
+- **(tuple)** X train, y train, X test, y test
+
+___
+
+```
+get_freqs(x)
+```
+
+<br> 
+ 
+Perform the majority voting label assignment on the basis of the k     nearest neighbors  
+<br>
+
+#### Parameters<br> 
+
+- **x** *(numpy.ndarray)*: neighbors labels arrayPerform the majority voting label assignment on the basis of the k  nearest neighbors <br>
+
+#### Returns<br> 
+- **(str)** majority voting assigned labels
+
+___
+
+```
+fit_predict(X_train, y_train, X_test, y_test, k_ = 8)
+```
+
+<br> 
+ 
+Run the Leave-One-Out classification. Thus fit the k-nearest-neighbor      classifier and then assign the labels through majority voting  
+<br>
+
+#### Parameters<br> 
+
+- **X_train** *(numpy.ndarray)*: Training embedding dataset shaped `(N_samples,Embedding_size)`<br> 
+
+- **y_train** *(numpy.ndarray)*: Training label dataset shaped `(N_samples,)`<br> 
+
+- **X_test** *(numpy.ndarray)*: Testing embedding dataset shaped `(N_samples,Embedding_size)` with unlabelled, otherwise `(N_GT_samples,Embedding_size)`<br> 
+
+- **y_test** *(numpy.ndarray)*: Testing label dataset shaped `(N_samples,)` with unlabelled, otherwise `(N_GT_samples,)`<br> 
+
+- **k_** *(int)*, optional: the `sklearn.neighbors.KNeighborClassifier.kneighbors`, method returnsthe item itself in the first position, by default 8Run the Leave-One-Out classification. Thus fit the k-nearest-neighbor classifier and then assign the labels through majority voting <br>
+
+#### Returns<br> 
+- **(list)** majority voting assigned labels
+
+___
+
+```
+get_shs_df(embeddings, pred)
+```
+
+<br> 
+ 
+Compute the silhouette of the provided clusters partition.  
+<br>
+
+#### Parameters<br> 
+
+- **embeddings** *(pandas.DataFrame)*: embeddings dataframe<br> 
+
+- **pred** *(numpy.ndarray)*: detected clustersCompute the silhouette of the provided clusters partition. <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** dataset with the clusters and their respective silhouette values
+
+___
+
+```
+elbow_eps(distance, nod)
+```
+
+<br> 
+ 
+Perform the elbow method on the k-dist plot as described in the DBSCAN     paper  
+<br>
+
+#### Parameters<br> 
+
+- **distance** *(numpy.ndarray)*: distance between samples<br> 
+
+- **nod** *(pandas.DataFrame)*: samplesPerform the elbow method on the k-dist plot as described in the DBSCAN  paper <br>
+
+#### Returns<br> 
+- **(float)** elbow distance point used as epsilon
+
+___
+
+```
+extract_cluster(darknet, clusterid)
+```
+
+<br> 
+ 
+Extract the cluster traces from the total darknet one  
+<br>
+
+#### Parameters<br> 
+
+- **darknet** *(pandas.DataFrame)*: monthly darknet traces<br> 
+
+- **clusterid** *(str)*: identifier of the cluster. Typically it is `Cx`, where x is an integerExtract the cluster traces from the total darknet one <br>
+
+#### Returns<br> 
+- **(tuple)** monthly cluster traces and heatmap of packets per IP
+
+___
+
+```
+Jaccard(x, y)
+```
+
+<br> 
+ 
+Compute the jaccard index among the two provided set of ports  
+<br>
+
+#### Parameters<br> 
+
+- **x** *(set)*: set of ports reached by cluster X <br> 
+
+- **y** *(set)*: set of ports reached by cluster YCompute the jaccard index among the two provided set of ports <br>
+
+#### Returns<br> 
+- **(float)** jaccard index
+
+___
+
+```
+update_jacc(mat, x, y, sets)
+```
+
+<br> 
+ 
+Update an empty jaccard matrix with the provided X and Y clusters  
+<br>
+
+#### Parameters<br> 
+
+- **mat** *(pandas.DataFrame)*: jaccard matrix<br> 
+
+- **x** *(str)*: matrix index of cluster X<br> 
+
+- **y** *(str)*: matrix index ofcluster Y<br> 
+
+- **sets** *(pandas.DataFrame)*: sets of ports reached by different clustersUpdate an empty jaccard matrix with the provided X and Y clusters <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** updated jaccard matrix
+
+___
+
+```
+manage_censys_ticks(clusters)
+```
+
+<br> 
+ 
+Extract the y-axis ticks centered on the censys sub-cluster scatterplot.  
+<br>
+
+#### Parameters<br> 
+
+- **clusters** *(pandas.DataFrame)*: censys tracesExtract the y-axis ticks centered on the censys sub-cluster scatterplot. <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)**
+
+___
+
+```
+cluster_report(clusters)
+```
+
+<br> 
+ 
+Compute a small report for the provided clusters. Namely, computes     The number of distinct senders, the number of port/protocol pairs and the     top-3 ports  
+<br>
+
+#### Parameters<br> 
+
+- **clusters** *(pandas.DataFrame)*: clusters traces for which obtain the reportCompute a small report for the provided clusters. Namely, computes  The number of distinct senders, the number of port/protocol pairs and the  top-3 ports <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** report of the provided clusters
 
