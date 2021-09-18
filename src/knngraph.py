@@ -1,15 +1,11 @@
 """
 Implementation of the k-Nearest-Neighbors Graph with the Louvain algorithm 
-application for community detection. 
+application for cluster detection. 
 The module builds a Graph from a set of embeddings. The nodes are the IPs, and 
 the link among two nodes exists if they belongs to the same k-neighborhood. The 
-edges weights are the cosine similarity among the nodes pairs. 
-If k is not provided a heuristic based on the elbow method on the modularity is 
-performed to get the optimal *k* value. If the knee is not found, the by default 
-'k=4'. 
-Then the Louvain algorithm is applied and the community id of each node is saved 
-as the attribute `community`. The resulting graph is saved as a .gexf file which 
-can be re-loaded and is compatible with Gephi.
+edges weights are the cosine similarity among the nodes pairs.  
+The Louvain algorithm is applied and the cluster id of each node is saved 
+as the attribute `community`. 
 """
 
 import pandas as pd
@@ -20,60 +16,57 @@ import numpy as np
 
 class KnnGraph():
     """Implementation of the k-Nearest-Neighbors Graph with the Louvain 
-    algorithm application for community detection. 
+    algorithm application for cluster detection. 
+    
     The module builds a Graph from a set of embeddings. The nodes are the IPs, 
     and the link among two nodes exists if they belongs to the same 
-    k-neighborhood. The edges weights are the cosine similarity among the nodes 
-    pairs. 
-    If k is not provided a heuristic based on the elbow method on the modularity
-    is performed to get the optimal *k* value. If the knee is not found, the by 
-    default 'k=4'. 
-    Then the Louvain algorithm is applied and the community id of each node is 
-    saved as the attribute `community`.
-    The resulting graph is saved as a .gexf file which can be re-loaded and is 
-    compatible with Gephi.
+    k-neighborhood. The edges weights are the cosine similarity among the nodes
+    pairs.  
+    
+    The Louvain algorithm is applied and the cluster id of each node is saved 
+    as the attribute `community`. 
 
     Parameters
     ----------
     graph_path : str, optional
-        Global path to create a directory named as `model_name` containing 
+        global path to create a directory named as `model_name` containing 
         the model, scalers and graphs, by default None
     graph_gen : bool, optional
-        If True generate a new knn graph from scratch. If False load an 
+        if True generate a new knn graph from scratch. If False load an 
         existing .gexf graph, by default False
     k : int, optional
-        Number of nearest neighbors to use during the kNN graph creation. If
+        number of nearest neighbors to use during the kNN graph creation. If
         None the heuristic for k is performed, by default 4
     embeddings : numpy.ndarray, optional
-        ip2vec embeddings used to built the knn graph, by default None
+        darkvec embeddings used to built the knn graph, by default None
     ips : list, optional
-        Set of IPs for which the embeddings must be generated, by default 
+        set of IPs for which the embeddings must be generated, by default 
         None
     labels : list, optional
-        Ground truth labels of the `ips`, by default None
+        ground truth labels of the `ips`, by default None
 
     Attributes
     ----------
     graph_path : str
-        Global path to create a directory named as `model_name` containing 
+        global path to create a directory named as `model_name` containing 
         the model, scalers and graphs.
     embeddings : numpy.ndarray
-        ip2vec embeddings used to built the knn graph.
+        darkvec embeddings used to built the knn graph.
     labels : list, optional
-        Ground truth labels of the `ips`.
+        ground truth labels of the `ips`.
     k : int
-        Number of nearest neighbors to use during the kNN graph creation.
+        number of nearest neighbors to use during the kNN graph creation.
     gname : str
         `Gknn.gexf` where `k` is the passed value.
     mod : float
-        Modularity value of the graph after the Louvain application.
+        modularity value of the graph after the Louvain application.
     comms : dict
-        Detected communities. The keys are the `ips`, the values are the id 
+        detected communities. The keys are the `ips`, the values are the id 
         of the communities.
     nc : int
-        Number of distinct communities.
+        number of distinct communities.
     G : networkx.classes.graph.Graph)
-        k-Nearest-Neighbor Graph built from the generated ip2vec embeddings.
+        k-Nearest-Neighbor Graph built from the generated darkvec embeddings.
     """
     def __init__(self, graph_path=None, graph_gen=False, k=4, embeddings=None, 
                  ips=None, labels=None):
@@ -109,9 +102,10 @@ class KnnGraph():
 
         Returns
         -------
-        (numpy.ndarray, numpy.ndarray)
-            Indices of the k nearest neighbors of each embedding; distances 
-            between the embeddings and their k nearest neighbors.
+        tuple
+            (numpy.ndarray, numpy.ndarray). Indices of the k nearest neighbors 
+            of each embedding; distances between the embeddings and their k 
+            nearest neighbors.
         """
         X = self.embeddings
         y = self.labels
@@ -129,7 +123,8 @@ class KnnGraph():
         Returns
         -------
         networkx.classes.graph.Graph
-            k-Nearest-Neighbor Graph built from the generated ip2vec embeddings.
+            k-Nearest-Neighbor Graph built from the generated darkvec 
+            embeddings.
         """
         G = nx.read_gexf(f"{self.graph_path}/{self.gname}")
         return G
@@ -137,8 +132,8 @@ class KnnGraph():
     def create_graph(self, pos, dist):
         """Take the indices of the k  nearest neighbors of each embeddings and
         the distances between the embeddings and their k nearest neighbors. Use
-        them to create a weighted k-Nearest-Neighbors Graph. The weights are the
-        cosine similarities among nodes (ips).
+        them to create a weighted k-Nearest-Neighbors Graph. The weights are 
+        the cosine similarities among nodes (ips).
 
         Parameters
         ----------
@@ -150,7 +145,8 @@ class KnnGraph():
         Returns
         -------
         networkx.classes.graph.Graph
-            k-Nearest-Neighbor Graph built from the generated ip2vec embeddings.
+            k-Nearest-Neighbor Graph built from the generated darkvec 
+            embeddings.
         """
         links = set()
         atts = {}
