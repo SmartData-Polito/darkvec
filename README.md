@@ -301,7 +301,7 @@ Fastplot callback for generating Fig.8b of the paper.     Engin-Umich activity p
 
 - **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
 
-- **en_um** *(pandas.DataFrame)*: 
+- **en_um** *(pandas.DataFrame)*: sequence of packets per source IP belonging to Engin-Umich GT class
 
 ___
 
@@ -535,8 +535,6 @@ Fastplot callback for plotting the pattern of the ports contacted by     IPs bel
 
 [Back to index](#toc)
 
- Implementation of the k-Nearest-Neighbors Graph with the Louvain algorithm application for cluster detection. The module builds a Graph from a set of embeddings. The nodes are the IPs, and the link among two nodes exists if they belongs to the same k-neighborhood. The edges weights are the cosine similarity among the nodes pairs.  The Louvain algorithm is applied and the cluster id of each node is saved as the attribute `community`. <br>
-
 ## KnnGraph
 
 ___
@@ -592,15 +590,6 @@ ___
     get_knn_pos(load_scaler=False, save_scaler=False)
 ```
 
-<br> 
-<br> 
-<br> 
-<br>
-
-#### Returns 
-        indices and the relative distances.  
-<br>
-
 #### Parameters<br> 
 
 - **load_scaler** *(bool)*, optional: embeddings distance. If False fit a new scaler, by default False<br> 
@@ -608,7 +597,8 @@ ___
 - **save_scaler** *(bool)*, optional: If True save the fitted scaler, by default Falseindices and the relative distances. <br>
 
 #### Returns<br> 
-- **(tuple)** (numpy.ndarray, numpy.ndarray). Indices of the k nearest neighbors  of each embedding; distances between the embeddings and their k  nearest neighbors.
+
+- **(tuple)** `(numpy.ndarray, numpy.ndarray)`. Indices of the k nearest neighbors  of each embedding; distances between the embeddings and their k  nearest neighbors.
 
 ___
 
@@ -621,8 +611,7 @@ ___
 Load an existing .gexf graph.  Load an existing .gexf graph. <br>
 
 #### Returns<br> 
-- **(networkx.classes.graph.Graph)**<br> 
-- **(embeddings.)**
+- **(networkx.classes.graph.Graph)** k-Nearest-Neighbor Graph built from the generated darkvec embeddings.
 
 ___
 
@@ -642,24 +631,7 @@ Take the indices of the k  nearest neighbors of each embeddings and         the 
 - **dist** *(numpy.ndarray)*: Distances between the embeddings and their k nearest neighbors.Take the indices of the k nearest neighbors of each embeddings and  the distances between the embeddings and their k nearest neighbors. Use  them to create a weighted k-Nearest-Neighbors Graph. The weights are the cosine similarities among nodes (ips). <br>
 
 #### Returns<br> 
-- **(networkx.classes.graph.Graph)**<br> 
-- **(embeddings.)**<br>
-
-##                 s_= self.labels[s_idx]
-
-
-___
-```
-                s_= self.labels[s_idx]
-(<br>
-
-##                     d_= self.labels[d_idx]
-
-
-___
-```
-                    d_= self.labels[d_idx]
-(
+- **(networkx.classes.graph.Graph)** k-Nearest-Neighbor Graph built from the generated darkvec embeddings.
 
 ___
 
