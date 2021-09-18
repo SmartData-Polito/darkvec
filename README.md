@@ -695,35 +695,6 @@ ___
 get_last_day_stats(df, gt_class)
 ```
 
-<br> 
-<br>
-
-##     provided ground truth 
-
-
-___
-```
-    provided ground truth 
-( 
-Get the number of senders, packets, ports, and the top-5 ports for the      provided ground truth   <br>
-
-##     gt_: str
-
-
-___
-```
-    gt_: str
-(<br>
-
-##         ground truth to analyze
-
-
-___
-```
-        ground truth to analyze
-(
-<br>
-
 #### Parameters<br> 
 
 - **df** *(pandas.DataFrame)*: daily grund truth dataframegt_: strground truth to analyzeGet the number of senders, packets, ports, and the top-5 ports for the provided ground truth   <br>
@@ -783,14 +754,6 @@ split_train_test(data, with_unknown=False)
  
 Prepare the dataset for the Leave-One-Out k-nearest-neighbor classifier.     Fit the classifier with the unkown, then choose if predicting with or      without unknown  <br>
 
-##         GT labelled samples, by default False
-
-
-___
-```
-        GT labelled samples, by default False
-(
-<br>
 
 #### Parameters<br> 
 
