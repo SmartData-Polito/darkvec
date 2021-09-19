@@ -1,13 +1,12 @@
 # <b>DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings</b>
 
-In this artifact we report all the codes and the experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_
+In this repository we report all artifacts for experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_
 ___
-***Note:*** All the codes and data we provide are the ones included in the paper. All the codes can be executed. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. To speed up the notebook execution, by default we trim the file loading, however it is possible to run custom experiments. 
+***Note:*** All source code and data we provide are the ones included in the paper. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. To speed up the notebook execution, by default we trim the file loading. 
 
-Please, note that, according to the seed of third-party libraries, when running the codes without our intermediate files, some of the results may slightly chage. 
+Please, note that when running the code without starting from the provided intermediate files, or because of random seeds used in third-party libraries, some results may slightly chage from one run to another. The general trends observed in the paper are however stable. 
 
-Since the paper is still under review, we are apporting some changes, thus some of the figures and results reported in the paper might be different from the correct ones already obtained in this arctifact. 
-
+Notice that this repository has already been updated to include novel experiments and some changes requested by the reviewers. More changes will be included in the coming weeks to reflect the camera-ready version.
 
 ## <b>Table Of Content</b> <a id='toc'></a>
 
@@ -32,13 +31,13 @@ ___
 
 [Back to index](#toc)
 
-Firstly we provide an overview of the folders and data of the project.
+Firstly we provide an overview of the folders and data in the project.
 
 ### Notebooks <a id='notebook'></a>
 
 [Back to index](#toc)
 
-The snippets of the experiment discussed in the paper are reported in the 
+The experiments discussed in the paper are reported in the 
 following notebooks in the main folder: 
 
 * `01-darknet-overview.ipynb`: jupyter notebook performing the darknet 
@@ -47,13 +46,13 @@ characterization reported in the paper;
 search; 
 * `03-clustering.ipynb`: unsupervised clustering algorithms and results of
 the manual clusters inspection; 
-* `A01-corpus-generation.ipynb`: Appendix1. Codes used for generating the
-corpus of the experiments. It runs is designed to run on Spark; 
+* `A01-corpus-generation.ipynb`: Appendix1. Code used for generating the
+corpus of the experiments. It runs is designed to run on a Spark cluster; 
 * `A02-model-training.ipynb`: Appendix2. Training of the models used in the
-paper; 
+paper (requires Gensim); 
 * `A03-darknet-interim`: Appendix3. Some intermediate preprocessing. To 
-reduce the notebooks runtime, we save intermediate dataframes and load them
-instead of recomputing them. In this notebook, user can observe and repeat
+reduce the notebook runtime, we save intermediate dataframes and load them
+instead of always recomputing everything. In this notebook, user can observe and repeat
 such preprocessing. 
 
 ### `src` Folder <a id='src'></a>
@@ -63,7 +62,7 @@ such preprocessing.
 
 Python libraries and utilities designed for the experiments: 
 
-* `callbacks.py`: fastplot callbacks for generating the figures of the 
+* `callbacks.py`: ``fastplot'' callbacks for generating the figures of the 
 paper; 
 * `knngraph.py`: implementation of the k-nearest-neighbor-graph described
 in the paper; 
@@ -95,21 +94,21 @@ ___
 [Back to index](#toc)
 
 
-All the raw and final data and intermediate preprocessing. They are stored in 
-the `DATA` folder of the configuration file. 
+All raw and intermediate data resulting from preprocessing steps can be found in 
+the `DATA` folder, pointed by the configuration file. 
 
 ### `corpus` Folder <a id='corpus'></a>
 
 [Back to index](#toc)
 
 
-It contains all the corpora generated for the experiments. A part from the 
+It contains all the corpora generated for the experiments. Except for the 
 IP2VEC case, a corpus is a set of .txt files reporting a sequence of IPs wrt.
-different languages, or classes of service. 
+different languages (classes of service). 
 
 The corpora we provide are: 
 
-* `dante5`. Last 5 days of collected traffic used in the DANTE paper; 
+* `dante5`. Last 5 days of collected traffic used as in the DANTE paper; 
 * `darkvec30auto`. Last 30 days of collected traffic used in the DarkVec 
 experiments. Auto-defined languages; 
 * `darkvec30single`. Last 30 days of collected traffic used in the DarkVec 
@@ -140,7 +139,7 @@ last 5 days;
 * `embeddings_d1_f30.csv.gz`: last day of darknet traffic filtered over the 
 last 30 days;
 * `sh_cluster.csv.gz`: per-cluster silhuette dataset;
-*`ips.json`: it contains all the list of IPs referred to a certain day. 
+*`ips.json`: it contains all the list of IP addresses referred to a certain day. 
 Each key indicates a day:
     - `d30_u`: it is referred to the 30 days dataset unfiltered;
     - `d30_f`: 30 days dataset filtered;
@@ -151,9 +150,8 @@ Each key indicates a day:
 
 [Back to index](#toc)
 
-
 It collects the output of different experiments. They are used to generate the
-plots faster than recomputing the results. By running the notebooks it is 
+plots without recomputing the results. By running the notebooks it is 
 possible to re-create what is in this folder:
 
 * `knngraph.json`: Number of found clusters and modularity during the
@@ -161,7 +159,6 @@ testing of k for the knn graph;
 * `parameter_tuning.csv`: DarkVec hyperparameters grid search results;
 * `training_window.csv`: results of the grid search about the training window;
 * `knn_k.csv`: results of the grid search for k f the knn classifier;
-* `training_runtime.csv` # TODO
 
 ### `groundtruth` Folder <a id='groundtruth'></a>
 
@@ -560,7 +557,7 @@ KnnGraph(graph_path=None,
     labels=None)
 ```
  
-Implementation of the k-Nearest-Neighbors Graph with the Louvain      algorithm application for cluster detection.           The module builds a Graph from a set of embeddings. The nodes are the IPs,      and the link among two nodes exists if they belongs to the same      k-neighborhood. The edges weights are the cosine similarity among the nodes     pairs.            The Louvain algorithm is applied and the cluster id of each node is saved      as the attribute `community`.   
+Implementation of the k-Nearest-Neighbors Graph with the Louvain      algorithm application for cluster detection.           The module builds a Graph from a set of embeddings. The nodes are the IP addresses,      and the link among two nodes exists if they belongs to the same      k-neighborhood. The edges weights are the cosine similarity among the nodes     pairs.            The Louvain algorithm is applied and the cluster id of each node is saved      as the attribute `community`.   
 <br>
 
 #### Parameters<br> 
@@ -575,7 +572,7 @@ Implementation of the k-Nearest-Neighbors Graph with the Louvain      algorithm 
 
 - **ips** *(list)*, optional: set of IPs for which the embeddings must be generated, by default None<br> 
 
-- **labels** *(list)*, optional: ground truth labels of the `ips`, by default NoneImplementation of the k-Nearest-Neighbors Graph with the Louvain algorithm application for cluster detection.  The module builds a Graph from a set of embeddings. The nodes are the IPs, and the link among two nodes exists if they belongs to the same k-neighborhood. The edges weights are the cosine similarity among the nodes  pairs. The Louvain algorithm is applied and the cluster id of each node is saved as the attribute `community`.   <br>
+- **labels** *(list)*, optional: ground truth labels of the `ips`, by default None. Implementation of the k-Nearest-Neighbors Graph with the Louvain algorithm application for cluster detection.  The module builds a Graph from a set of embeddings. The nodes are the IPs, and the link among two nodes exists if they belongs to the same k-neighborhood. The edges weights are the cosine similarity among the nodes  pairs. The Louvain algorithm is applied and the cluster id of each node is saved as the attribute `community`.   <br>
 
 #### Attributes<br> 
 
