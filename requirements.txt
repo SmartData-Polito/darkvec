@@ -3,7 +3,7 @@ sklearn
 pandas
 numpy
 kneed
-networkx
+networkx==2.5
 python-louvain
 seaborn
 fastplot

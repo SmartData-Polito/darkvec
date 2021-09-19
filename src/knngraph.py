@@ -177,10 +177,15 @@ class KnnGraph():
 
         links_df = pd.DataFrame(
             [{'s':k[0], 'd':k[1], 'weight':v} for k,v in links_att.items()])
-        G = nx.from_pandas_dataframe(links_df, 
+        G = nx.from_pandas_edgelist(links_df, 
                                      source='s', 
                                      target='d', 
                                      edge_attr='weight')
+        #G = nx.from_pandas_dataframe(links_df, 
+        #                             source='s', 
+        #                             target='d', 
+        #                             edge_attr='weight')
+        
         G.add_nodes_from(atts.keys() - set(G.nodes()))
         if type(self.labels) is np.ndarray:
             nx.set_node_attributes(G, 'gt_class', atts)
