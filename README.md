@@ -10,6 +10,7 @@ Notice that this repository has already been updated to include novel experiment
 
 ## <b>Table Of Content</b> <a id='toc'></a>
 
+* [ How to reproduce results in the paper? ] (#howto)
 * [Project Structure](#proj)
     * [Notebooks](#notebook)
     * [`src` Folder](#src)
@@ -27,6 +28,24 @@ Notice that this repository has already been updated to include novel experiment
     * [`src.utils`](#srcutils)
 
 ___
+## <b> How to reproduce results in the paper?</b> <a id='howto'></a>
+
+1. Clone this repository
+2. Download the two gzip files from: https://mplanestore.polito.it:5001/sharing/yDA3EVRFp
+3. Unzip the coNEXT.gz file into a subfolder of this repository called `coNEXT`
+
+`$ gunzip coNEXT.gz`
+
+4. Unzip the raw.gz file into a subfolder of this repository called `raw`
+
+`$ gunzip raw.gz`
+
+5. Install the required libraries (python3 is assumed): 
+
+`$ pip install requirements.txt`
+
+[Back to index](#toc)
+
 ## <b>Project Structure</b> <a id='proj'></a>
 
 [Back to index](#toc)
