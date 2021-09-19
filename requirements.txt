@@ -5,3 +5,4 @@ numpy
 kneed
 networkx
 python-louvain
+jupyterlab
