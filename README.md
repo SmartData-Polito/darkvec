@@ -10,7 +10,7 @@ Notice that this repository has already been updated to include novel experiment
 
 ## <b>Table Of Content</b> <a id='toc'></a>
 
-* [ How to reproduce results in the paper? ] (#howto)
+* [How to reproduce results in the paper?](#howto)
 * [Project Structure](#proj)
     * [Notebooks](#notebook)
     * [`src` Folder](#src)
