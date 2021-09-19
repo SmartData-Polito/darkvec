@@ -34,11 +34,11 @@ Note: This guide assumes a Linux operating system (tested on Ubuntu 20.04).
 
 1. Clone this repository
 2. Download the two gzip files from: https://mplanestore.polito.it:5001/sharing/yDA3EVRFp
-3. Unzip the coNEXT.gz file into a subfolder of this repository called `coNEXT`
+3. Unzip the coNEXT.tar.gz file into a subfolder of this repository called `coNEXT`
 
 `gunzip coNEXT.gz`
 
-4. Unzip the raw.gz file into a subfolder of this repository called `raw`
+4. Unzip the raw.tar.gz file into a subfolder of this repository called `raw`
 
 `gunzip raw.gz`
 
