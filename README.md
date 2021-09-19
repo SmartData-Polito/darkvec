@@ -34,15 +34,15 @@ ___
 2. Download the two gzip files from: https://mplanestore.polito.it:5001/sharing/yDA3EVRFp
 3. Unzip the coNEXT.gz file into a subfolder of this repository called `coNEXT`
 
-`$ gunzip coNEXT.gz`
+`gunzip coNEXT.gz`
 
 4. Unzip the raw.gz file into a subfolder of this repository called `raw`
 
-`$ gunzip raw.gz`
+`gunzip raw.gz`
 
 5. Install the required libraries (python3 is assumed): 
 
-`$ pip install requirements.txt`
+`pip3 install -r requirements.txt`
 
 [Back to index](#toc)
 
