@@ -132,8 +132,8 @@ It contains all the intermediate preprocessing. Namely:
 * `embeddings_ip2vec.csv.gz`: embeddings generated thrugh the IP2VEC 
 methodology after 5 days of training;
 * `darknet_d1.csv.gz`: last day of darknet traffic unfiltered;
-* `detected_clusters.csv.gz`: results of the GMA on the knn graph of the 
-paper;
+* `detected_clusters.csv.gz`: results of the Greedy Modularity Algorithm (aka Louvain) 
+on the knn graph of the paper;
 * `darknet_d1_f5.csv.gz`: last day of darknet traffic filtered over the 
 last 5 days;
 * `embeddings_d1_f30.csv.gz`: last day of darknet traffic filtered over the 
