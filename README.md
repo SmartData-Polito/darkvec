@@ -44,6 +44,12 @@ ___
 
 `pip3 install -r requirements.txt`
 
+6. Run the notebooks described next. 
+ 
+Note that the `raw` data is used to create the intermediate datasets in the `coNEXT` folder. 
+Notebooks are provided (as Appendix) for this step. Given the size of the raw traces a 
+spark cluster is recommended for this step.  
+
 [Back to index](#toc)
 
 ## <b>Project Structure</b> <a id='proj'></a>
