@@ -5,4 +5,6 @@ numpy
 kneed
 networkx
 python-louvain
+seaborn
+fastplot
 jupyterlab
