@@ -50,7 +50,7 @@ Note: This guide assumes a Linux operating system (tested on Ubuntu 20.04).
 
 `sudo apt install cm-super`
 
-6. Run the notebooks described next. For example, to run the first notebook:
+7. Run the notebooks described next. For example, to run the first notebook:
 
 `jupyter-lab 01-darknet-overview.ipynb`
 
