@@ -3,6 +3,8 @@ sklearn
 pandas
 numpy
 kneed
+keras
+tensorflow
 networkx==2.5
 python-louvain
 seaborn
