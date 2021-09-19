@@ -1,9 +1,9 @@
 # Correct darknet traffic start from 2021/03
 START  = '202103'
 # Global path of the raw darknet traces
-TRACES  = f'/share/smartdata/security/darknet/logs/it_v4/trace-{START}'
+TRACES  = f'raw/trace-{START}'
 # Global path of the data folder
-DATA = '/share/smartdata/huawei/darknet_graph/coNEXT/'
+DATA = 'coNEXT/'
 
 # Other useful paths
 CORPUS  = f'{DATA}/corpus'
