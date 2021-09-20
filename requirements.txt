@@ -10,3 +10,5 @@ python-louvain
 seaborn
 fastplot
 jupyterlab
+findspark
+pyspark
