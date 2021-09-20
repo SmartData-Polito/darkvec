@@ -48,9 +48,10 @@ Note: This guide assumes a Linux operating system (tested on Ubuntu 20.04).
 
 6. Create a new virtual environment and activate it:
 
-`virtualenv darkvec-env`
-
-`source darkvec-env/bin/activate`
+```
+virtualenv darkvec-env
+source darkvec-env/bin/activate
+```
 
 7. Install the required libraries (python3 is assumed):
 
