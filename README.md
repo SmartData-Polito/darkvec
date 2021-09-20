@@ -47,11 +47,11 @@ and take part on scan activity without their knowledge.
 
 3. Unzip the coNEXT.tar.gz file into a subfolder of this repository called `coNEXT`
 
-`gunzip coNEXT.gz`
+`tar -zxvf coNEXT.tar.gz`
 
 4. Unzip the raw.tar.gz file into a subfolder of this repository called `raw`
 
-`gunzip raw.gz`
+`tar -zxvf raw.tar.gz`
 
 5. Install the `virtualenv` library (python3 is assumed):
 
