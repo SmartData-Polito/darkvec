@@ -181,14 +181,10 @@ class KnnGraph():
                                      source='s', 
                                      target='d', 
                                      edge_attr='weight')
-        #G = nx.from_pandas_dataframe(links_df, 
-        #                             source='s', 
-        #                             target='d', 
-        #                             edge_attr='weight')
         
         G.add_nodes_from(atts.keys() - set(G.nodes()))
         if type(self.labels) is np.ndarray:
-            nx.set_node_attributes(G, 'gt_class', atts)
+            nx.set_node_attributes(G=G, name='gt_class', values=atts)
 
         return G
 
@@ -204,7 +200,7 @@ class KnnGraph():
         self.comms = comms = gma.best_partition(self.G,random_state=15)
         self.mod = gma.modularity(comms, self.G)
         self.nc = len(set([v for k, v in comms.items()]))
-        nx.set_node_attributes(self.G, 'community', comms)
+        nx.set_node_attributes(G=self.G, name='community', values=comms)
         
         if save_graph:
             nx.write_gexf(self.G, f"{self.graph_path}/{self.gname}")
