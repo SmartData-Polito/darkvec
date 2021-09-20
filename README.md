@@ -33,7 +33,18 @@ ___
 Note: This guide assumes a Linux operating system (tested on Ubuntu 20.04).
 
 1. Clone this repository
-2. Download the two gzip files from: https://mplanestore.polito.it:5001/sharing/yDA3EVRFp
+2. Download the two gzip files from: https://datacloud.di.unito.it/index.php/s/2Yq6Yd3pWdZn2HQ
+
+A password is required to download the traces above. For now, this password has
+been shared only with CoNEXT TPC members to allow them to check reproducibility.
+CoNEXT TPC members have been asked to use the data only for their evaluation.
+
+A public dataset will be released soon, where IP addresses are anonymized.
+The reason for this anonymization step is that some IP addresses sending traffic
+to the darknet can be victims of attacks, such as people that have the PC hacked
+and take part on scan activity without their knowledge.
+
+
 3. Unzip the coNEXT.tar.gz file into a subfolder of this repository called `coNEXT`
 
 `gunzip coNEXT.gz`
@@ -96,12 +107,12 @@ search;
 * `03-clustering.ipynb`: unsupervised clustering algorithms and results of
 the manual clusters inspection;
 
-The previous notebooks start from intermediate datasets and pre-trained models. 
+The previous notebooks start from intermediate datasets and pre-trained models.
 These steps are time consuming, in particular for alternative approaches.
 They can be reproduced with the following notebooks:
 
 * `A01-corpus-generation.ipynb`: Appendix1. Code used for generating the
-corpus of the experiments. Ideally, it should be run on a Spark cluster. 
+corpus of the experiments. Ideally, it should be run on a Spark cluster.
 The provided notebook is steup for spark stand-alone, which is not scalable;
 * `A02-model-training.ipynb`: Appendix2. Training of the models used in the
 paper (requires Gensim);

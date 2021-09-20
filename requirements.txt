@@ -11,4 +11,4 @@ seaborn
 fastplot
 jupyterlab
 findspark
-pyspark
+pyspark==3.0.2

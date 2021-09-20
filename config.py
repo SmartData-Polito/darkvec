@@ -19,6 +19,8 @@ PROTO_CONVERSION = {'6':'tcp', '1':'icmp', '17':'udp', '47':'gre'}
 import os
 traces = os.listdir(TRACES[:-12])
 traces_path = ''
+root_path = os.getcwd()  + '/'
+
 for i in range(2, 32):
     if i<10:
         traces_path+='file://'+TRACES[:-12]+f'trace-{START}0{i}*/packets.log.gz,'
@@ -26,3 +28,11 @@ for i in range(2, 32):
         traces_path+='file://'+TRACES[:-12]+f'trace-{START}{i}*/packets.log.gz,'
 
 DEBUG = traces_path[:-1]
+
+for i in range(2, 32):
+    if i<10:
+        traces_path+='file://'+root_path+TRACES[:-12]+f'trace-{START}0{i}*/packets.log.gz,'
+    else:
+        traces_path+='file://'+root_path+TRACES[:-12]+f'trace-{START}{i}*/packets.log.gz,'
+
+TRACES_SPARK = traces_path[:-1]
