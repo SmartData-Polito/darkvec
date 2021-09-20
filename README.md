@@ -66,7 +66,7 @@ source darkvec-env/bin/activate
 
 7. Install the required libraries (python3 is assumed):
 
-`pip3 install --user -r requirements.txt`
+`pip3 install -r requirements.txt`
 
 8. For plotting figures, install the required fonts (assuming Debian-like Linux):
 
