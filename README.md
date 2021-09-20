@@ -42,21 +42,36 @@ Note: This guide assumes a Linux operating system (tested on Ubuntu 20.04).
 
 `gunzip raw.gz`
 
-5. Install the required libraries (python3 is assumed):
+5. Install the `virtualenv` library (python3 is assumed):
+
+`pip3 install --user virtualenv`
+
+6. Create a new virtual environment and activate it:
+
+`virtualenv darkvec-env`
+
+`source darkvec-env/bin/activate`
+
+7. Install the required libraries (python3 is assumed):
 
 `pip3 install --user -r requirements.txt`
 
-6. For plotting figures, install the requited fonts (assuming Debian-like Linux):
+8. For plotting figures, install the required fonts (assuming Debian-like Linux):
 
 `sudo apt install cm-super`
 
-7. Run the notebooks described next. For example, to run the first notebook:
+9. Run the notebooks described next. For example, to run the first notebook:
 
 `jupyter-lab 01-darknet-overview.ipynb`
 
 Note that the `raw` data is used to create the intermediate datasets in the `coNEXT` folder.
 Notebooks are provided (as Appendix) for this step. Given the size of the raw traces a
 spark cluster is recommended for this step.
+
+10. When the notebook exploration is ended, remember to deactivate the virtual environment:
+
+`deactivate`
+
 
 [Back to index](#toc)
 
