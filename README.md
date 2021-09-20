@@ -95,8 +95,14 @@ characterization reported in the paper;
 search;
 * `03-clustering.ipynb`: unsupervised clustering algorithms and results of
 the manual clusters inspection;
+
+The previous notebooks start from intermediate datasets and pre-trained models. 
+These steps are time consuming, in particular for alternative approaches.
+They can be reproduced with the following notebooks:
+
 * `A01-corpus-generation.ipynb`: Appendix1. Code used for generating the
-corpus of the experiments. It runs is designed to run on a Spark cluster;
+corpus of the experiments. Ideally, it should be run on a Spark cluster. 
+The provided notebook is steup for spark stand-alone, which is not scalable;
 * `A02-model-training.ipynb`: Appendix2. Training of the models used in the
 paper (requires Gensim);
 * `A03-darknet-interim`: Appendix3. Some intermediate preprocessing. To
