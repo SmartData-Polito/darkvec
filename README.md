@@ -44,7 +44,7 @@ Note: This guide assumes a Linux operating system (tested on Ubuntu 20.04).
 
 5. Install the required libraries (python3 is assumed):
 
-`pip3 install --suer -r requirements.txt`
+`pip3 install --user -r requirements.txt`
 
 6. For plotting figures, install the requited fonts (assuming Debian-like Linux):
 
