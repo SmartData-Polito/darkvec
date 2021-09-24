@@ -8,6 +8,7 @@ import seaborn as sns
 import numpy as np
 from datetime import datetime
 from matplotlib.lines import Line2D
+import matplotlib as mpl
 
 
 def fig1a(plt, pkts, top):
@@ -343,11 +344,22 @@ def fig10(plt, shs):
     cen_sh = shs.iloc[cen].sh.values
     shadows = np.where(shs.index.isin([25, 29, 37]))[0]
     shadows_sh = shs.iloc[shadows].sh.values
-    plt.xticks([])
-    plt.scatter(cen, cen_sh, s=15, color='r', marker='o', label='Censys')
-    plt.scatter(shadows, shadows_sh, s=15, color='b', 
+    adbworm = np.where(shs.index.isin([41]))[0]
+    adbworm_sh = shs.iloc[adbworm].sh.values
+    mirai = np.where(shs.index.isin([18]))[0]
+    mirai_sh = shs.iloc[mirai].sh.values
+    plt.xticks(list(cen)+list(shadows)+list(adbworm)+list(mirai), [])
+    plt.scatter(cen, cen_sh, s=30, color='g', marker='o', label='Censys')
+    plt.scatter(shadows, shadows_sh, s=30, color='b', 
                 marker='s', label='Shadowserver')
+    plt.scatter(adbworm, adbworm_sh, s=30, color='r', 
+                marker='*', label='ADB worm')
+    plt.scatter(mirai, mirai_sh, s=30, color='purple', 
+                marker='^', label='Mirai-like')
     plt.legend()
+    plt.xlim(-1)
+    plt.ylim(None,1.05)
+
     
 def fig11(plt, clusters, tick):
     """Fastplot callback for generating Fig.11 of the paper.
@@ -365,22 +377,22 @@ def fig11(plt, clusters, tick):
     ax1 = plt.gca()
     for c in clusters.C.unique():
         ax1.scatter(clusters[clusters.C==c].index, 
-                    clusters[clusters.C==c].tkn, s=.01, marker='o')
+                    clusters[clusters.C==c].tkn, s=.02, marker='o')
     ax1.grid(linestyle='--')
     
     ax1.set_xlabel('Time [day]')
     ax1.set_ylabel('Sender')
     ax1.set_yticks([])
     ax2 = ax1.twinx();
-    ax2.set_ylabel('Community')
+    ax2.set_ylabel('Cluster')
     ax2.set_yticks(tick.x)
-    ax2.set_yticklabels([f'C{i}' for i in tick.index])
+    ax2.set_yticklabels([f'C{int(i)}' for i in tick.index])
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
     plt.gca().xaxis.set_major_formatter(formatter)
     plt.xlim(datetime.strptime('2021-03-03:00', '%Y-%m-%d:%H'),
              datetime.strptime('2021-03-31:00', '%Y-%m-%d:%H'))   
-    plt.ylim(-1, 128)
+    plt.ylim(-1, 111)
     
 def fig12(plt, clusters):
     """Fastplot callback for generating Fig.12 of the paper.
