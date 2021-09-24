@@ -7,6 +7,7 @@ from matplotlib.colors import LogNorm
 import seaborn as sns
 import numpy as np
 from datetime import datetime
+from matplotlib.lines import Line2D
 
 
 def fig1a(plt, pkts, top):
@@ -475,3 +476,109 @@ def plot_port_pattern(plt, clusters_):
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
     plt.gca().xaxis.set_major_formatter(formatter)
+    
+    
+#======================================================================================
+#  PAPER REVIEW
+#======================================================================================
+
+def scatterplot_ip_ports(plt, df):
+    
+    for c in df['class'].unique():
+        temp_df = df[df['class']== c]
+        if c == 'mirai':
+            c = 'mirai-like'
+        if c == 'unknown':
+            plt.scatter(temp_df.port_token, temp_df.ip_token, label=c.capitalize(), s=1, alpha=.4, color='k')
+        else:
+            plt.scatter(temp_df.port_token, temp_df.ip_token, label=c.capitalize(), s=1, alpha=.8)
+    lgnd = plt.legend(loc=(1.02,0))
+    for i in range(len(lgnd.legendHandles)):
+        lgnd.legendHandles[i]._sizes = [30]
+        lgnd.legendHandles[i].set_alpha(1)
+    plt.xlim(0)
+    plt.ylim(0)
+    plt.ticklabel_format(axis="y", style="sci", scilimits=(0,0))
+
+    plt.xlabel('Ports rank')
+    plt.ylabel('Source IPs')
+    
+    plt.grid(linestyle='--')
+    
+def ground_truth_heatmap(plt, pivot):
+
+    cols = dict()
+    rows = dict()
+    for c in pivot.index:
+        c1 = c
+        if c == 'unk_eph':
+            c = 'Unknown ephemeral'
+        elif c == 'unk_usr':
+            c = 'Unknown user'
+        elif c == 'unk_sys':
+            c = 'Unknown system'
+        elif c== 'mail':
+            c = 'Mail'
+        elif c== 'kerberos':
+            c = 'Kerberos'
+        elif c== 'netbios':
+            c = 'NetBIOS'
+        elif c== 'telnet':
+            c = 'Telnet'
+        elif c== 'icmp':
+            c = 'ICMP'
+        elif c== 'netbios-smb':
+            c = 'NetBIOS-SMB'
+        else:
+            c = c.upper()
+        cols[c1] = c
+    for r in pivot.columns:
+        if r == 'mirai':
+            r = 'mirai-like'
+        rows[r] = r.capitalize()
+
+    sns.heatmap(pivot.rename(index=cols, columns=rows), cmap='summer_r', 
+                norm=LogNorm() , cbar_kws={'label':'Fraction of daily packets'})
+
+    plt.xlabel('Ground truth class')
+    plt.ylabel('Class of service')
+    
+    
+    
+    
+def knn_boxplot(plt, res):
+    
+    new_idx = []
+    for x in res['class'].unique():
+        if x == 'mirai':
+            x1 = 'mirai-like'
+        else: 
+            x1 = str(x)
+        new_idx.append(x1.capitalize())
+
+    
+    ax = plt.gca()
+    sns.boxplot(x='val', y='class', hue='metric', data=res, palette='Blues', ax=ax)
+    ax.legend()
+    ax.set_yticklabels(new_idx)
+    ax.set_xlabel('Metric')
+    ax.set_ylabel('Ground truth class')
+    ax.set_xlim(-.02, 1.02)
+    
+    plt.grid()
+    
+    
+    
+def clustering_baseline(plt, df):
+    new_idx = dict()
+    for x in df.index:
+        if x == 'mirai':
+            x1 = 'mirai-like'
+        else: 
+            x1 = x
+        new_idx[x] = x1.capitalize()
+
+    sns.heatmap(df.rename(index=new_idx), cmap='summer_r', cbar_kws={'label':'GT points per cluster [\%]'})
+
+    plt.xlabel('Assigned Cluster')
+    plt.ylabel('True Label')

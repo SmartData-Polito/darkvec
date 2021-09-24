@@ -3,7 +3,8 @@ START  = '202103'
 # Global path of the raw darknet traces
 TRACES  = f'raw/trace-{START}'
 # Global path of the data folder
-DATA = 'coNEXT/'
+#DATA = 'coNEXT/'
+DATA = '/share/smartdata/huawei/darknet_graph/coNEXT'
 
 # Other useful paths
 CORPUS  = f'{DATA}/corpus'
@@ -16,6 +17,8 @@ GRIDSEARCH = f'{DATA}/gridsearch'
 PROTO_CONVERSION = {'6':'tcp', '1':'icmp', '17':'udp', '47':'gre'}
 
 # Manage all the traces for 2021/03
+# TODO uncomment the following:
+"""
 import os
 traces = os.listdir(TRACES[:-12])
 traces_path = ''
@@ -36,3 +39,4 @@ for i in range(2, 32):
         traces_path+='file://'+root_path+TRACES[:-12]+f'trace-{START}{i}*/packets.log.gz,'
 
 TRACES_SPARK = traces_path[:-1]
+"""
