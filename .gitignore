@@ -1,3 +1,4 @@
 core
 __pycache__
 .ipynb_checkpoints
+doc.py

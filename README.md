@@ -25,7 +25,9 @@ Notice that this repository has already been updated to include novel experiment
 * [Documentation](#doc)
     * [`src.callbacks`](#srccallbacks)
     * [`src.knngraph`](#srcknngraph)
+    * [`src.kmeans`](#srckmeans) 
     * [`src.utils`](#srcutils)
+    * [`src.review`](#srcreview)
 
 ___
 ## <b> How to reproduce results in the paper?</b> <a id='howto'></a>
@@ -102,10 +104,12 @@ following notebooks in the main folder:
 
 * `01-darknet-overview.ipynb`: jupyter notebook performing the darknet
 characterization reported in the paper;
-* `02-grid-search.ipynb`: experiments performed during the DarkVec grid
-search;
-* `03-clustering.ipynb`: unsupervised clustering algorithms and results of
+* `02-baseline.ipynb`: experiments performed with the supervised approach. 
+Section Baseline of the paper;
+* `03-grid-search.ipynb`: unsupervised clustering algorithms and results of
 the manual clusters inspection;
+* `04-clustering.ipynb`: experiments performed during the DarkVec grid
+search.
 
 The previous notebooks start from intermediate datasets and pre-trained models.
 These steps are time consuming, in particular for alternative approaches.
@@ -133,6 +137,10 @@ paper;
 * `knngraph.py`: implementation of the k-nearest-neighbor-graph described
 in the paper;
 * `utils.py`: some utility functions;
+* `review.py`: utility functions used in notebooks after the paper review. 
+Mainly used in the baseline experiments;
+* `kmeans.py`: implementation of the supervised k-Means algorithm described
+in the paper;
 
 ### Configuration File `config.py` <a id='config'></a>
 
@@ -350,12 +358,12 @@ Fastplot callback for generating Fig.2b of the paper.     Cumulative number of s
 ___
 
 ```
-fig8a(plt, stretchoid)
+fig10a(plt, stretchoid)
 ```
 
 
 
-Fastplot callback for generating Fig.8a of the paper.     Stretchoid activity pattern.  Fastplot callback for generating Fig.8a of the paper.  Stretchoid activity pattern. <br>
+Fastplot callback for generating Fig.10a of the paper.     Stretchoid activity pattern.  Fastplot callback for generating Fig.8a of the paper.  Stretchoid activity pattern. <br>
 
 #### Parameters<br>
 
@@ -366,12 +374,12 @@ Fastplot callback for generating Fig.8a of the paper.     Stretchoid activity pa
 ___
 
 ```
-fig8b(plt, en_um)
+fig10b(plt, en_um)
 ```
 
 
 
-Fastplot callback for generating Fig.8b of the paper.     Engin-Umich activity pattern.  Fastplot callback for generating Fig.8b of the paper.  Engin-Umich activity pattern. <br>
+Fastplot callback for generating Fig.10b of the paper.     Engin-Umich activity pattern.  Fastplot callback for generating Fig.8b of the paper.  Engin-Umich activity pattern. <br>
 
 #### Parameters<br>
 
@@ -382,12 +390,12 @@ Fastplot callback for generating Fig.8b of the paper.     Engin-Umich activity p
 ___
 
 ```
-fig5(plt, gs_train_window)
+fig7(plt, gs_train_window)
 ```
 
 
 
-Fastplot callback for generating Fig.5 of the paper.     Impact of training window length.  Fastplot callback for generating Fig.5 of the paper.  Impact of training window length. <br>
+Fastplot callback for generating Fig.7 of the paper.     Impact of training window length.  Fastplot callback for generating Fig.5 of the paper.  Impact of training window length. <br>
 
 #### Parameters<br>
 
@@ -398,12 +406,12 @@ Fastplot callback for generating Fig.5 of the paper.     Impact of training wind
 ___
 
 ```
-fig6(plt, knn_accs)
+fig8(plt, knn_accs)
 ```
 
 
 
-Fastplot callback for generating Fig.6 of the paper.     Impact of k on the k-NN classifier.      Fastplot callback for generating Fig.6 of the paper.  Impact of k on the k-NN classifier. <br>
+Fastplot callback for generating Fig.8 of the paper.     Impact of k on the k-NN classifier.      Fastplot callback for generating Fig.6 of the paper.  Impact of k on the k-NN classifier. <br>
 
 #### Parameters<br>
 
@@ -414,12 +422,11 @@ Fastplot callback for generating Fig.6 of the paper.     Impact of k on the k-NN
 ___
 
 ```
-fig7a1(plt, heatmaps, Vs, Cs)
+fig9a1(plt, heatmaps, Vs, Cs)
 ```
+<br>
 
-
-
-Fastplot callback for generating the first part of Fig.7a of the paper.     Auto-defined models, grid search through accuracy.      Fastplot callback for generating the first part of Fig.7a of the paper.  Auto-defined models, grid search through accuracy. <br>
+Fastplot callback for generating the first part of Fig.9a of the paper.  Auto-defined models, grid search through accuracy. <br>
 
 #### Parameters<br>
 
@@ -434,12 +441,12 @@ Fastplot callback for generating the first part of Fig.7a of the paper.     Auto
 ___
 
 ```
-fig7a2(plt, heatmaps_time, Vs, Cs)
+fig9a2(plt, heatmaps_time, Vs, Cs)
 ```
 
 
 
-Fastplot callback for generating the second part of Fig.7a of the paper.     Auto-defined models, grid search through model training runtime.  Fastplot callback for generating the second part of Fig.7a of the paper.  Auto-defined models, grid search through model training runtime. <br>
+Fastplot callback for generating the second part of Fig.9a of the paper.     Auto-defined models, grid search through model training runtime.  <br>
 
 #### Parameters<br>
 
@@ -454,12 +461,12 @@ Fastplot callback for generating the second part of Fig.7a of the paper.     Aut
 ___
 
 ```
-fig7b1(plt, heatmaps, Vs, Cs)
+fig9b1(plt, heatmaps, Vs, Cs)
 ```
 
 
 
-Fastplot callback for generating the first part of Fig.7b of the paper.     Per-service models, grid search through accuracy.      Fastplot callback for generating the first part of Fig.7b of the paper.  Per-service models, grid search through accuracy. <br>
+Fastplot callback for generating the first part of Fig.9b of the paper.     Per-service models, grid search through accuracy.<br>
 
 #### Parameters<br>
 
@@ -474,12 +481,12 @@ Fastplot callback for generating the first part of Fig.7b of the paper.     Per-
 ___
 
 ```
-fig7b2(plt, heatmaps_time, Vs, Cs)
+fig9b2(plt, heatmaps_time, Vs, Cs)
 ```
 
 
 
-Fastplot callback for generating the second part of Fig.7b of the paper.     Per-service models, grid search through accuracy.  Fastplot callback for generating the second part of Fig.7b of the paper.  Per-service models, grid search through accuracy. <br>
+Fastplot callback for generating the second part of Fig.9b of the paper.     Per-service models, grid search through accuracy.   <br>
 
 #### Parameters<br>
 
@@ -494,12 +501,12 @@ Fastplot callback for generating the second part of Fig.7b of the paper.     Per
 ___
 
 ```
-fig9(plt, ncs, mods)
+fig11(plt, ncs, mods)
 ```
 
 
 
-Fastplot callback for generating Fig.9 of the paper.     Impact of k' in cluster detection.  Fastplot callback for generating Fig.9 of the paper.  Impact of k' in cluster detection. <br>
+Fastplot callback for generating Fig.11 of the paper.     Impact of k' in cluster detection.  <br>
 
 #### Parameters<br>
 
@@ -512,12 +519,12 @@ Fastplot callback for generating Fig.9 of the paper.     Impact of k' in cluster
 ___
 
 ```
-fig10(plt, shs)
+fig12(plt, shs)
 ```
 
 
 
-Fastplot callback for generating Fig.10 of the paper.     Average silhouette of points within the found clusters.  Fastplot callback for generating Fig.10 of the paper.  Average silhouette of points within the found clusters. <br>
+Fastplot callback for generating Fig.12 of the paper.     Average silhouette of points within the found clusters.  <br>
 
 #### Parameters<br>
 
@@ -528,12 +535,12 @@ Fastplot callback for generating Fig.10 of the paper.     Average silhouette of 
 ___
 
 ```
-fig11(plt, clusters, tick)
+fig13(plt, clusters, tick)
 ```
 
 
 
-Fastplot callback for generating Fig.11 of the paper.     Activity patterns of Censys sub-clusters.  Fastplot callback for generating Fig.11 of the paper.  Activity patterns of Censys sub-clusters. <br>
+Fastplot callback for generating Fig.13 of the paper.     Activity patterns of Censys sub-clusters.  <br>
 
 #### Parameters<br>
 
@@ -546,12 +553,12 @@ Fastplot callback for generating Fig.11 of the paper.     Activity patterns of C
 ___
 
 ```
-fig12(plt, clusters)
+fig14(plt, clusters)
 ```
 
 
 
-Fastplot callback for generating Fig.12 of the paper.     Activity patterns of Shadowserver sub-clusters.  Fastplot callback for generating Fig.12 of the paper.  Activity patterns of Shadowserver sub-clusters. <br>
+Fastplot callback for generating Fig.14 of the paper.     Activity patterns of Shadowserver sub-clusters.  <br>
 
 #### Parameters<br>
 
@@ -564,7 +571,6 @@ ___
 ```
 plot_censys_jaccard(plt, jacc)
 ```
-
 
 
 Fastplot callback for generating the jaccard heatmap. It represents the     jaccard index between the ports contacted by the censys found sub-clusters  Fastplot callback for generating the jaccard heatmap. It represents the  jaccard index between the ports contacted by the censys found sub-clusters <br>
@@ -606,6 +612,40 @@ Fastplot callback for plotting the pattern of the ports contacted by     IPs bel
 - **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br>
 
 - **clusters_** *(pandas.DataFrame)*: set of destination ports timeseries per source IP
+
+___
+
+```
+ground_truth_heatmap(plt, pivot)
+```
+
+
+ 
+Generate the heatmap with the fraction of packets per service for each     ground truth class  Generate the heatmap with the fraction of packets per service for each  ground truth class <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **pivot** *(pandas.DataFrame)*: data to plot
+
+___
+
+```
+clustering_baseline(plt, df)
+```
+
+
+ 
+Heatmap of ground truth w.r.t. assigned labels after supervised      clustering  Heatmap of ground truth w.r.t. assigned labels after supervised clustering <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **df** *(pandas.DataFrame)*: data to plot
+
+
 
 ## `src.knngraph` <a id='srcknngraph'></a>
 
@@ -722,6 +762,80 @@ Run the Louvain algorithm on the knn graph finding the best nodes          parti
 #### Parameters<br>
 
 - **save_graph** *(bool)*, optional: if True save a .gexf file compatible with Gephi, by default False
+
+
+<br>
+
+## `src.kmeans` <a id='srckmeans'></a>
+
+[Back to index](#toc)
+
+___
+```
+Kmeans(dataset, k)
+```
+
+<br> 
+ 
+Implementation of the k-Means used in the completely sueprvised          clustering on the baseline case. The takes in input the dataset         and the number of clusters, then run the fitting and the cluster labels         assignment  Implementation of the k-Means used in the completely sueprvised clustering on the baseline case. The takes in input the dataset  and the number of clusters, then run the fitting and the cluster labels  assignment <br>
+
+#### Parameters <br> 
+
+- **dataset** *(pandas.DataFrame)*: (`N_samples x N_features + gt_class`) dataset to cluster<br> 
+
+- **k** *(int)*: numer of clusters for the partition
+
+___
+
+```
+    fit(X_train=None)
+```
+
+
+ 
+Fit the k-Means classifier. If the X_train dataset is provided, the         algorithm is fitted on it. Otherwise split the dataset into training one         (full ground truth labels + unknown) and testing one (full ground truth         labels + unknown if desired)  Fit the k-Means classifier. If the X_train dataset is provided, the  algorithm is fitted on it. Otherwise split the dataset into training one  (full ground truth labels + unknown) and testing one (full ground truth  labels + unknown if desired) <br>
+
+#### Parameters<br> 
+
+- **X_train** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset used to fit the 
+
+___
+
+```
+    predict(X_test=None)
+```
+
+
+ 
+After having fitted the dataset, run the algorithm and assign the         cluster labels to the provided dataset. If `X_test` is not provided,          the dataset used during the fitting is used.  
+<br>
+
+#### Parameters<br> 
+
+- **X_test** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset to cluster, by default NoneAfter having fitted the dataset, run the algorithm and assign the  cluster labels to the provided dataset. If `X_test` is not provided, the dataset used during the fitting is used. <br>
+
+#### Returns<br> 
+- **(list)** assigned cluster labels
+
+___
+
+```
+    fit_predict(X_train=None, X_test=None)
+```
+
+<br> 
+ 
+Fit the k-Means on the provided `X_train` and cluster `X_test`   
+<br>
+
+#### Parameters<br> 
+
+- **X_train** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset used to fit the <br> 
+
+- **X_test** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset to cluster, by default NoneFit the k-Means on the provided `X_train` and cluster `X_test`   <br>
+
+#### Returns<br> 
+- **(list)** assigned cluster labels
 
 
 ## `src.utils` <a id='srcutils'></a>
@@ -1024,3 +1138,178 @@ Compute a small report for the provided clusters. Namely, computes     The numbe
 #### Returns<br>
 - **(pandas.DataFrame)** report of the provided clusters
 
+
+## `src.review` <a id='srcreview'></a>
+
+[Back to index](#toc)
+
+
+___
+
+```
+convert_pp(x, services)
+```
+
+ 
+Convert the port/protocol pair of a packet in the respective service  <br>
+
+<br>
+
+#### Parameters<br> 
+
+- **x** *(str)*: port/protocol pair<br> 
+
+- **services** *(dict)*: domain knowledge based of service<br>
+
+#### Returns<br> 
+- **(str)** domain knowledge based of service the packet belongs to
+
+___
+
+```
+unknown_class(x)
+```
+
+<br> 
+ 
+Manage the port/protocol pairs that are not classified in `services`  
+<br>
+
+#### Parameters<br> 
+
+- **x** *(str)*: port/protocol pairManage the port/protocol pairs that are not classified in `services` <br>
+
+#### Returns<br> 
+- **(str)**<br> 
+- **(conversion)**
+
+___
+
+```
+extract_features(baseline_df, ktop)
+```
+
+<br> 
+ 
+Extract the features for the baseline (top-`ktop` ports of each GT class)  
+<br>
+
+#### Parameters<br> 
+
+- **baseline_df** *(pandas.DataFrame)*: raw traces of the baseline<br> 
+
+- **ktop** *(int)*: number of GT top ports to consider as featureExtract the features for the baseline (top-`ktop` ports of each GT class) <br>
+
+#### Returns<br> 
+- **(numpy.ndarray)** list of port/protocol pairs used as features
+
+___
+
+```
+pivot_baseline(baseline_df, features)
+```
+
+<br> 
+ 
+Extract the dataset from the raw one for the dataset. The features are     the percentage of traffic sent by each IP to the port/protocol pairs listed     in `features`  
+<br>
+
+#### Parameters<br> 
+
+- **baseline_df** *(pandas.DataFrame)*: raw baseline traces<br> 
+
+- **features** *(numpy.ndarray)*: list of port/protocol pairs used as featuresExtract the dataset from the raw one for the dataset. The features are  the percentage of traffic sent by each IP to the port/protocol pairs listed  in `features` <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** final baseline dataset
+
+___
+
+```
+build_dataset_from_raw(raw_df, top_k_ports)
+```
+
+<br> 
+ 
+Run the f___
+
+```
+ground_truth_heatmap(plt, pivot)
+```
+
+
+ 
+Generate the heatmap with the fraction of packets per service for each     ground truth class  Generate the heatmap with the fraction of packets per service for each  ground truth class <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **pivot** *(pandas.DataFrame)*: data to plot
+
+___
+
+```
+clustering_baseline(plt, df)
+```
+
+
+ 
+Heatmap of ground truth w.r.t. assigned labels after supervised      clustering  Heatmap of ground truth w.r.t. assigned labels after supervised clustering <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **df** *(pandas.DataFrame)*: data to plotull baseline pipeline starting from raw data, extracting      features and generating the final dataset  
+<br>
+
+#### Parameters<br> 
+
+- **raw_df** *(pandas.DataFrame)*: raw baseline traces<br> 
+
+- **top_k_ports** *(int)*: number of ground truth top ports to consider as featuresRun the full baseline pipeline starting from raw data, extracting features and generating the final dataset <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** final baseline dataset
+
+___
+
+```
+knn_simple_step(dataset, with_unknown, k)
+```
+
+<br> 
+ 
+Run a k-nearest-neighbor fit and predict  
+<br>
+
+#### Parameters<br> 
+
+- **dataset** *(pandas.DataFrame)*: dataset to classify<br> 
+
+- **with_unknown** *(bool)*: if True the predicting dataset is the same of the fitting, otherwisethe unknown labelled IPs are not classified<br> 
+
+- **k** *(int)*: number of nearest neughbors to consider in the majority voting labelassignmentRun a k-nearest-neighbor fit and predict <br>
+
+#### Returns<br> 
+- **(tuple)** list of y true and y predicted labels
+
+___
+
+```
+pivot_clusters(dataset)
+```
+
+<br> 
+ 
+Generate the dataframe after the supervised k-means for the heatmap  
+<br>
+
+#### Parameters<br> 
+
+- **dataset** *(pandas.DataFrame)*: dataset to process<br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** (`N_GT_class x N_clusters`) shaped dataset. In can be visualized as a
+        heatmap

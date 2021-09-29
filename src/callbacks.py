@@ -7,6 +7,8 @@ from matplotlib.colors import LogNorm
 import seaborn as sns
 import numpy as np
 from datetime import datetime
+from matplotlib.lines import Line2D
+import matplotlib as mpl
 
 
 def fig1a(plt, pkts, top):
@@ -103,8 +105,8 @@ def fig2b(plt, cdf, cdf_f):
     plt.legend()
     plt.xlim(-.5, 29.5)
     
-def fig8a(plt, stretchoid):
-    """Fastplot callback for generating Fig.8a of the paper.
+def fig10a(plt, stretchoid):
+    """Fastplot callback for generating Fig.10a of the paper.
     Stretchoid activity pattern.
 
     Parameters
@@ -126,8 +128,8 @@ def fig8a(plt, stretchoid):
     plt.yticks([0, 100, 200, 300, 400, 500, 600, 700])
     plt.ylim(0, 700)
     
-def fig8b(plt, en_um):
-    """Fastplot callback for generating Fig.8b of the paper.
+def fig10b(plt, en_um):
+    """Fastplot callback for generating Fig.10b of the paper.
     Engin-Umich activity pattern.
 
     Parameters
@@ -148,8 +150,8 @@ def fig8b(plt, en_um):
              datetime.strptime('2021-03-31:00', '%Y-%m-%d:%H'))   
     plt.ylim(-.5, 30)
     
-def fig5(plt, gs_train_window):
-    """Fastplot callback for generating Fig.5 of the paper.
+def fig7(plt, gs_train_window):
+    """Fastplot callback for generating Fig.7 of the paper.
     Impact of training window length.
 
     Parameters
@@ -168,8 +170,8 @@ def fig5(plt, gs_train_window):
     plt.xlabel('Training window size')
     plt.ylabel('Coverage [\%]')
     
-def fig6(plt, knn_accs):
-    """Fastplot callback for generating Fig.6 of the paper.
+def fig8(plt, knn_accs):
+    """Fastplot callback for generating Fig.8 of the paper.
     Impact of k on the k-NN classifier.
     
     Parameters
@@ -180,11 +182,11 @@ def fig6(plt, knn_accs):
         results of the experiments for the impact of classifier k
     """
     plt.plot(knn_accs['service_x'], knn_accs['service_y'], 
-             marker='o', markersize=3, label='Per-service languages')
+             marker='o', markersize=3, label='Domain knowledge based classes')
     plt.plot(knn_accs['auto_x'], knn_accs['auto_y'], 
-             marker='s', markersize=3, label='Auto-defined languages')
+             marker='s', markersize=3, label='Auto-defined classes')
     plt.plot(knn_accs['single_x'], knn_accs['single_y'], 
-             marker='*', markersize=4, label='Single language')
+             marker='*', markersize=4, label='Single class')
     plt.xlabel('$k$')
     plt.legend()
     plt.ylabel('$k$-NN accuracy')
@@ -192,8 +194,8 @@ def fig6(plt, knn_accs):
     plt.xticks([1, 3, 7, 17, 25, 35])
     plt.ylim(.3)
     
-def fig7a1(plt, heatmaps, Vs, Cs):
-    """Fastplot callback for generating the first part of Fig.7a of the paper.
+def fig9a1(plt, heatmaps, Vs, Cs):
+    """Fastplot callback for generating the first part of Fig.9a of the paper.
     Auto-defined models, grid search through accuracy.
     
     Parameters
@@ -217,8 +219,8 @@ def fig7a1(plt, heatmaps, Vs, Cs):
     plt.xticks([x+.5 for x in range(len(Cs))], Cs)
     ax.invert_yaxis()
     
-def fig7a2(plt, heatmaps_time, Vs, Cs):
-    """Fastplot callback for generating the second part of Fig.7a of the paper.
+def fig9a2(plt, heatmaps_time, Vs, Cs):
+    """Fastplot callback for generating the second part of Fig.9a of the paper.
     Auto-defined models, grid search through model training runtime.
 
     Parameters
@@ -242,8 +244,8 @@ def fig7a2(plt, heatmaps_time, Vs, Cs):
     plt.xticks([x+.5 for x in range(len(Cs))], Cs)
     ax.invert_yaxis()
     
-def fig7b1(plt, heatmaps, Vs, Cs):
-    """Fastplot callback for generating the first part of Fig.7b of the paper.
+def fig9b1(plt, heatmaps, Vs, Cs):
+    """Fastplot callback for generating the first part of Fig.9b of the paper.
     Per-service models, grid search through accuracy.
     
     Parameters
@@ -267,8 +269,8 @@ def fig7b1(plt, heatmaps, Vs, Cs):
     plt.xticks([x+.5 for x in range(len(Cs))], Cs)
     ax.invert_yaxis()
     
-def fig7b2(plt, heatmaps_time, Vs, Cs):
-    """Fastplot callback for generating the second part of Fig.7b of the paper.
+def fig9b2(plt, heatmaps_time, Vs, Cs):
+    """Fastplot callback for generating the second part of Fig.9b of the paper.
     Per-service models, grid search through accuracy.
 
     Parameters
@@ -292,8 +294,8 @@ def fig7b2(plt, heatmaps_time, Vs, Cs):
     plt.xticks([x+.5 for x in range(len(Cs))], Cs)
     ax.invert_yaxis()
     
-def fig9(plt, ncs, mods):
-    """Fastplot callback for generating Fig.9 of the paper.
+def fig11(plt, ncs, mods):
+    """Fastplot callback for generating Fig.11 of the paper.
     Impact of k' in cluster detection.
 
     Parameters
@@ -323,8 +325,8 @@ def fig9(plt, ncs, mods):
     ax2.grid(linestyle='-.')
     plt.tight_layout()
     
-def fig10(plt, shs):    
-    """Fastplot callback for generating Fig.10 of the paper.
+def fig12(plt, shs):    
+    """Fastplot callback for generating Fig.12 of the paper.
     Average silhouette of points within the found clusters.
 
     Parameters
@@ -342,14 +344,25 @@ def fig10(plt, shs):
     cen_sh = shs.iloc[cen].sh.values
     shadows = np.where(shs.index.isin([25, 29, 37]))[0]
     shadows_sh = shs.iloc[shadows].sh.values
-    plt.xticks([])
-    plt.scatter(cen, cen_sh, s=15, color='r', marker='o', label='Censys')
-    plt.scatter(shadows, shadows_sh, s=15, color='b', 
+    adbworm = np.where(shs.index.isin([41]))[0]
+    adbworm_sh = shs.iloc[adbworm].sh.values
+    mirai = np.where(shs.index.isin([18]))[0]
+    mirai_sh = shs.iloc[mirai].sh.values
+    plt.xticks(list(cen)+list(shadows)+list(adbworm)+list(mirai), [])
+    plt.scatter(cen, cen_sh, s=30, color='g', marker='o', label='Censys')
+    plt.scatter(shadows, shadows_sh, s=30, color='b', 
                 marker='s', label='Shadowserver')
+    plt.scatter(adbworm, adbworm_sh, s=30, color='r', 
+                marker='*', label='ADB worm')
+    plt.scatter(mirai, mirai_sh, s=30, color='purple', 
+                marker='^', label='Mirai-like')
     plt.legend()
+    plt.xlim(-1)
+    plt.ylim(None,1.05)
+
     
-def fig11(plt, clusters, tick):
-    """Fastplot callback for generating Fig.11 of the paper.
+def fig13(plt, clusters, tick):
+    """Fastplot callback for generating Fig.13 of the paper.
     Activity patterns of Censys sub-clusters.
 
     Parameters
@@ -364,25 +377,25 @@ def fig11(plt, clusters, tick):
     ax1 = plt.gca()
     for c in clusters.C.unique():
         ax1.scatter(clusters[clusters.C==c].index, 
-                    clusters[clusters.C==c].tkn, s=.01, marker='o')
+                    clusters[clusters.C==c].tkn, s=.02, marker='o')
     ax1.grid(linestyle='--')
     
     ax1.set_xlabel('Time [day]')
     ax1.set_ylabel('Sender')
     ax1.set_yticks([])
     ax2 = ax1.twinx();
-    ax2.set_ylabel('Community')
+    ax2.set_ylabel('Cluster')
     ax2.set_yticks(tick.x)
-    ax2.set_yticklabels([f'C{i}' for i in tick.index])
+    ax2.set_yticklabels([f'C{int(i)}' for i in tick.index])
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
     plt.gca().xaxis.set_major_formatter(formatter)
     plt.xlim(datetime.strptime('2021-03-03:00', '%Y-%m-%d:%H'),
              datetime.strptime('2021-03-31:00', '%Y-%m-%d:%H'))   
-    plt.ylim(-1, 128)
+    plt.ylim(-1, 111)
     
-def fig12(plt, clusters):
-    """Fastplot callback for generating Fig.12 of the paper.
+def fig14(plt, clusters):
+    """Fastplot callback for generating Fig.14 of the paper.
     Activity patterns of Shadowserver sub-clusters.
 
     Parameters
@@ -475,3 +488,70 @@ def plot_port_pattern(plt, clusters_):
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
     plt.gca().xaxis.set_major_formatter(formatter)
+    
+    
+#==============================================================================
+#  PAPER REVIEW
+#==============================================================================  
+def ground_truth_heatmap(plt, pivot):
+    """Generate the heatmap with the fraction of packets per service for each
+    ground truth class
+
+    Parameters
+    ----------
+    plt : matplotlib.pyplot
+        matplotlib instance for fastplot callback
+    pivot : pandas.DataFrame
+        data to plot
+    """
+    cols = dict()
+    rows = dict()
+    for c in pivot.index:
+        c1 = c
+        if c == 'others': c = 'Others'
+        elif c== 'mail': c = 'Mail'
+        elif c== 'kerberos': c = 'Kerberos'
+        elif c== 'netbios': c = 'NetBIOS'
+        elif c== 'telnet': c = 'Telnet'
+        elif c== 'icmp': c = 'ICMP'
+        elif c== 'netbios-smb': c = 'NetBIOS-SMB'
+        else: c = c.upper()
+        cols[c1] = c
+    for r in pivot.columns:
+        if r == 'mirai':
+            r1 = 'mirai-like'
+        else:
+            r1 =r
+        rows[r] = r1.capitalize()
+    sns.heatmap(pivot.rename(index=cols, columns=rows), 
+                cmap='coolwarm', norm=LogNorm(), 
+                cbar_kws={'label':'Fraction of daily packets'})
+
+    plt.xlabel('Ground truth class')
+    plt.ylabel('Service')
+    
+    
+def clustering_baseline(plt, df):
+    """Heatmap of ground truth w.r.t. assigned labels after supervised 
+    clustering
+
+    Parameters
+    ----------
+    plt : matplotlib.pyplot
+        matplotlib instance for fastplot callback
+    df : pandas.DataFrame
+        data to plot
+    """
+    new_idx = dict()
+    for x in df.index:
+        if x == 'mirai':
+            x1 = 'mirai-like'
+        else: 
+            x1 = x
+        new_idx[x] = x1.capitalize()
+
+    sns.heatmap(df.rename(index=new_idx), cmap='coolwarm', 
+                cbar_kws={'label':'GT points per cluster [\%]'}, vmin=0)
+
+    plt.xlabel('Assigned Cluster')
+    plt.ylabel('True Label')
