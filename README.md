@@ -25,8 +25,9 @@ Notice that this repository has already been updated to include novel experiment
 * [Documentation](#doc)
     * [`src.callbacks`](#srccallbacks)
     * [`src.knngraph`](#srcknngraph)
-    * [`src.knngraph`](#srckmeans) 
+    * [`src.kmeans`](#srckmeans) 
     * [`src.utils`](#srcutils)
+    * [`src.review`](#srcreview)
 
 ___
 ## <b> How to reproduce results in the paper?</b> <a id='howto'></a>
@@ -136,7 +137,8 @@ paper;
 * `knngraph.py`: implementation of the k-nearest-neighbor-graph described
 in the paper;
 * `utils.py`: some utility functions;
-* `review.py`: utility functions used in notebooks after the paper review;
+* `review.py`: utility functions used in notebooks after the paper review. 
+Mainly used in the baseline experiments;
 * `kmeans.py`: implementation of the supervised k-Means algorithm described
 in the paper;
 
@@ -1104,3 +1106,148 @@ Compute a small report for the provided clusters. Namely, computes     The numbe
 #### Returns<br>
 - **(pandas.DataFrame)** report of the provided clusters
 
+
+## `src.review` <a id='srcreview'></a>
+
+[Back to index](#toc)
+
+
+___
+
+```
+convert_pp(x, services)
+```
+
+ 
+Convert the port/protocol pair of a packet in the respective service  <br>
+
+<br>
+
+#### Parameters<br> 
+
+- **x** *(str)*: port/protocol pair<br> 
+
+- **services** *(dict)*: domain knowledge based of service<br>
+
+#### Returns<br> 
+- **(str)** domain knowledge based of service the packet belongs to
+
+___
+
+```
+unknown_class(x)
+```
+
+<br> 
+ 
+Manage the port/protocol pairs that are not classified in `services`  
+<br>
+
+#### Parameters<br> 
+
+- **x** *(str)*: port/protocol pairManage the port/protocol pairs that are not classified in `services` <br>
+
+#### Returns<br> 
+- **(str)**<br> 
+- **(conversion)**
+
+___
+
+```
+extract_features(baseline_df, ktop)
+```
+
+<br> 
+ 
+Extract the features for the baseline (top-`ktop` ports of each GT class)  
+<br>
+
+#### Parameters<br> 
+
+- **baseline_df** *(pandas.DataFrame)*: raw traces of the baseline<br> 
+
+- **ktop** *(int)*: number of GT top ports to consider as featureExtract the features for the baseline (top-`ktop` ports of each GT class) <br>
+
+#### Returns<br> 
+- **(numpy.ndarray)** list of port/protocol pairs used as features
+
+___
+
+```
+pivot_baseline(baseline_df, features)
+```
+
+<br> 
+ 
+Extract the dataset from the raw one for the dataset. The features are     the percentage of traffic sent by each IP to the port/protocol pairs listed     in `features`  
+<br>
+
+#### Parameters<br> 
+
+- **baseline_df** *(pandas.DataFrame)*: raw baseline traces<br> 
+
+- **features** *(numpy.ndarray)*: list of port/protocol pairs used as featuresExtract the dataset from the raw one for the dataset. The features are  the percentage of traffic sent by each IP to the port/protocol pairs listed  in `features` <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** final baseline dataset
+
+___
+
+```
+build_dataset_from_raw(raw_df, top_k_ports)
+```
+
+<br> 
+ 
+Run the full baseline pipeline starting from raw data, extracting      features and generating the final dataset  
+<br>
+
+#### Parameters<br> 
+
+- **raw_df** *(pandas.DataFrame)*: raw baseline traces<br> 
+
+- **top_k_ports** *(int)*: number of ground truth top ports to consider as featuresRun the full baseline pipeline starting from raw data, extracting features and generating the final dataset <br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** final baseline dataset
+
+___
+
+```
+knn_simple_step(dataset, with_unknown, k)
+```
+
+<br> 
+ 
+Run a k-nearest-neighbor fit and predict  
+<br>
+
+#### Parameters<br> 
+
+- **dataset** *(pandas.DataFrame)*: dataset to classify<br> 
+
+- **with_unknown** *(bool)*: if True the predicting dataset is the same of the fitting, otherwisethe unknown labelled IPs are not classified<br> 
+
+- **k** *(int)*: number of nearest neughbors to consider in the majority voting labelassignmentRun a k-nearest-neighbor fit and predict <br>
+
+#### Returns<br> 
+- **(tuple)** list of y true and y predicted labels
+
+___
+
+```
+pivot_clusters(dataset)
+```
+
+<br> 
+ 
+Generate the dataframe after the supervised k-means for the heatmap  
+<br>
+
+#### Parameters<br> 
+
+- **dataset** *(pandas.DataFrame)*: dataset to process<br>
+
+#### Returns<br> 
+- **(pandas.DataFrame)** (`N_GT_class x N_clusters`) shaped dataset. In can be visualized as a
+        heatmap
