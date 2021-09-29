@@ -1324,9 +1324,9 @@ ___
 
 2021-09: **Version 2** after paper review:  
     * New files:  
-        * `02-baseline.ipynb`: notebook with the baseline experiments  
-        * `src.review`: utility functions used in the codes after the review   
-        * `src.kmeans`: implementation of supervised clustering on baseline  
+        - `02-baseline.ipynb`: notebook with the baseline experiments  
+        - `src.review`: utility functions used in the codes after the review   
+        - `src.kmeans`: implementation of supervised clustering on baseline  
     * Other changes:  
-        * dataset statistics in `01-darknet-overview.ipynb`  
-        * ground truth/service heatmap in `01-darknet-overview.ipynb`  
+        - dataset statistics in `01-darknet-overview.ipynb`  
+        - ground truth/service heatmap in `01-darknet-overview.ipynb`  
