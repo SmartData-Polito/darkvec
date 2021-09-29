@@ -25,6 +25,7 @@ Notice that this repository has already been updated to include novel experiment
 * [Documentation](#doc)
     * [`src.callbacks`](#srccallbacks)
     * [`src.knngraph`](#srcknngraph)
+    * [`src.knngraph`](#srckmeans) 
     * [`src.utils`](#srcutils)
 
 ___
@@ -102,9 +103,11 @@ following notebooks in the main folder:
 
 * `01-darknet-overview.ipynb`: jupyter notebook performing the darknet
 characterization reported in the paper;
-* `02-grid-search.ipynb`: experiments performed during the DarkVec grid
+* `02-baseline.ipynb`: experiments performed with the supervised approach. 
+Section Baseline of the paper;
+* `03-clustering.ipynb`: experiments performed during the DarkVec grid
 search;
-* `03-clustering.ipynb`: unsupervised clustering algorithms and results of
+* `04-grid-search.ipynb`: unsupervised clustering algorithms and results of
 the manual clusters inspection;
 
 The previous notebooks start from intermediate datasets and pre-trained models.
@@ -133,6 +136,9 @@ paper;
 * `knngraph.py`: implementation of the k-nearest-neighbor-graph described
 in the paper;
 * `utils.py`: some utility functions;
+* `review.py`: utility functions used in notebooks after the paper review;
+* `kmeans.py`: implementation of the supervised k-Means algorithm described
+in the paper;
 
 ### Configuration File `config.py` <a id='config'></a>
 
@@ -722,6 +728,80 @@ Run the Louvain algorithm on the knn graph finding the best nodes          parti
 #### Parameters<br>
 
 - **save_graph** *(bool)*, optional: if True save a .gexf file compatible with Gephi, by default False
+
+
+<br>
+
+## `src.kmeans` <a id='srckmeans'></a>
+
+[Back to index](#toc)
+
+___
+```
+Kmeans(dataset, k)
+```
+
+<br> 
+ 
+Implementation of the k-Means used in the completely sueprvised          clustering on the baseline case. The takes in input the dataset         and the number of clusters, then run the fitting and the cluster labels         assignment  Implementation of the k-Means used in the completely sueprvised clustering on the baseline case. The takes in input the dataset  and the number of clusters, then run the fitting and the cluster labels  assignment <br>
+
+#### Parameters <br> 
+
+- **dataset** *(pandas.DataFrame)*: (`N_samples x N_features + gt_class`) dataset to cluster<br> 
+
+- **k** *(int)*: numer of clusters for the partition
+
+___
+
+```
+    fit(X_train=None)
+```
+
+
+ 
+Fit the k-Means classifier. If the X_train dataset is provided, the         algorithm is fitted on it. Otherwise split the dataset into training one         (full ground truth labels + unknown) and testing one (full ground truth         labels + unknown if desired)  Fit the k-Means classifier. If the X_train dataset is provided, the  algorithm is fitted on it. Otherwise split the dataset into training one  (full ground truth labels + unknown) and testing one (full ground truth  labels + unknown if desired) <br>
+
+#### Parameters<br> 
+
+- **X_train** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset used to fit the 
+
+___
+
+```
+    predict(X_test=None)
+```
+
+
+ 
+After having fitted the dataset, run the algorithm and assign the         cluster labels to the provided dataset. If `X_test` is not provided,          the dataset used during the fitting is used.  
+<br>
+
+#### Parameters<br> 
+
+- **X_test** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset to cluster, by default NoneAfter having fitted the dataset, run the algorithm and assign the  cluster labels to the provided dataset. If `X_test` is not provided, the dataset used during the fitting is used. <br>
+
+#### Returns<br> 
+- **(list)** assigned cluster labels
+
+___
+
+```
+    fit_predict(X_train=None, X_test=None)
+```
+
+<br> 
+ 
+Fit the k-Means on the provided `X_train` and cluster `X_test`   
+<br>
+
+#### Parameters<br> 
+
+- **X_train** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset used to fit the <br> 
+
+- **X_test** *(numpy.ndarray)*, optional: (`N_samples x N_features + gt_class`) dataset to cluster, by default NoneFit the k-Means on the provided `X_train` and cluster `X_test`   <br>
+
+#### Returns<br> 
+- **(list)** assigned cluster labels
 
 
 ## `src.utils` <a id='srcutils'></a>
