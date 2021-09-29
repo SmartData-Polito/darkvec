@@ -1,6 +1,6 @@
 # <b>DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings</b>
 
-In this repository we report all artifacts for experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_
+In this repository we report all artifacts for experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_. The current version is _v2_ after the paper review. in the [changelog](#changelog) session the main changes are reported.
 ___
 ***Note:*** All source code and data we provide are the ones included in the paper. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. To speed up the notebook execution, by default we trim the file loading.
 
@@ -28,6 +28,7 @@ Notice that this repository has already been updated to include novel experiment
     * [`src.kmeans`](#srckmeans) 
     * [`src.utils`](#srcutils)
     * [`src.review`](#srcreview)
+* [Changelog](#changelog)
 
 ___
 ## <b> How to reproduce results in the paper?</b> <a id='howto'></a>
@@ -1313,3 +1314,19 @@ Generate the dataframe after the supervised k-means for the heatmap
 #### Returns<br> 
 - **(pandas.DataFrame)** (`N_GT_class x N_clusters`) shaped dataset. In can be visualized as a
         heatmap
+
+
+___
+# Changelog <a id='changelog'></a>
+
+[Back to index](#toc)
+
+
+2021-09: **Version 2** after paper review:
+    * New files:
+        * `02-baseline.ipynb`: notebook with the baseline experiments
+        * `src.review`: utility functions used in the codes after the review 
+        * `src.kmeans`: implementation of supervised clustering on baseline
+    * Other changes:
+        * dataset statistics in `01-darknet-overview.ipynb`
+        * ground truth/service heatmap in `01-darknet-overview.ipynb`
