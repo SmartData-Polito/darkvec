@@ -19,7 +19,7 @@ class Kmeans():
         self.dataset = dataset
         self.k = k
         self.kmeans = KMeans(n_clusters=self.k, random_state=15, 
-                             n_jobs=-1, algorithm='auto')
+                             algorithm='auto')
         self.X_train=None
         self.y_train=None
         self.X_test=None
