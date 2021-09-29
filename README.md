@@ -106,10 +106,10 @@ following notebooks in the main folder:
 characterization reported in the paper;
 * `02-baseline.ipynb`: experiments performed with the supervised approach. 
 Section Baseline of the paper;
-* `03-clustering.ipynb`: experiments performed during the DarkVec grid
-search;
-* `04-grid-search.ipynb`: unsupervised clustering algorithms and results of
+* `03-grid-search.ipynb`: unsupervised clustering algorithms and results of
 the manual clusters inspection;
+* `04-clustering.ipynb`: experiments performed during the DarkVec grid
+search.
 
 The previous notebooks start from intermediate datasets and pre-trained models.
 These steps are time consuming, in particular for alternative approaches.
@@ -358,12 +358,12 @@ Fastplot callback for generating Fig.2b of the paper.     Cumulative number of s
 ___
 
 ```
-fig8a(plt, stretchoid)
+fig10a(plt, stretchoid)
 ```
 
 
 
-Fastplot callback for generating Fig.8a of the paper.     Stretchoid activity pattern.  Fastplot callback for generating Fig.8a of the paper.  Stretchoid activity pattern. <br>
+Fastplot callback for generating Fig.10a of the paper.     Stretchoid activity pattern.  Fastplot callback for generating Fig.8a of the paper.  Stretchoid activity pattern. <br>
 
 #### Parameters<br>
 
@@ -374,12 +374,12 @@ Fastplot callback for generating Fig.8a of the paper.     Stretchoid activity pa
 ___
 
 ```
-fig8b(plt, en_um)
+fig10b(plt, en_um)
 ```
 
 
 
-Fastplot callback for generating Fig.8b of the paper.     Engin-Umich activity pattern.  Fastplot callback for generating Fig.8b of the paper.  Engin-Umich activity pattern. <br>
+Fastplot callback for generating Fig.10b of the paper.     Engin-Umich activity pattern.  Fastplot callback for generating Fig.8b of the paper.  Engin-Umich activity pattern. <br>
 
 #### Parameters<br>
 
@@ -390,12 +390,12 @@ Fastplot callback for generating Fig.8b of the paper.     Engin-Umich activity p
 ___
 
 ```
-fig5(plt, gs_train_window)
+fig7(plt, gs_train_window)
 ```
 
 
 
-Fastplot callback for generating Fig.5 of the paper.     Impact of training window length.  Fastplot callback for generating Fig.5 of the paper.  Impact of training window length. <br>
+Fastplot callback for generating Fig.7 of the paper.     Impact of training window length.  Fastplot callback for generating Fig.5 of the paper.  Impact of training window length. <br>
 
 #### Parameters<br>
 
@@ -406,12 +406,12 @@ Fastplot callback for generating Fig.5 of the paper.     Impact of training wind
 ___
 
 ```
-fig6(plt, knn_accs)
+fig8(plt, knn_accs)
 ```
 
 
 
-Fastplot callback for generating Fig.6 of the paper.     Impact of k on the k-NN classifier.      Fastplot callback for generating Fig.6 of the paper.  Impact of k on the k-NN classifier. <br>
+Fastplot callback for generating Fig.8 of the paper.     Impact of k on the k-NN classifier.      Fastplot callback for generating Fig.6 of the paper.  Impact of k on the k-NN classifier. <br>
 
 #### Parameters<br>
 
@@ -422,12 +422,11 @@ Fastplot callback for generating Fig.6 of the paper.     Impact of k on the k-NN
 ___
 
 ```
-fig7a1(plt, heatmaps, Vs, Cs)
+fig9a1(plt, heatmaps, Vs, Cs)
 ```
+<br>
 
-
-
-Fastplot callback for generating the first part of Fig.7a of the paper.     Auto-defined models, grid search through accuracy.      Fastplot callback for generating the first part of Fig.7a of the paper.  Auto-defined models, grid search through accuracy. <br>
+Fastplot callback for generating the first part of Fig.9a of the paper.  Auto-defined models, grid search through accuracy. <br>
 
 #### Parameters<br>
 
@@ -442,12 +441,12 @@ Fastplot callback for generating the first part of Fig.7a of the paper.     Auto
 ___
 
 ```
-fig7a2(plt, heatmaps_time, Vs, Cs)
+fig9a2(plt, heatmaps_time, Vs, Cs)
 ```
 
 
 
-Fastplot callback for generating the second part of Fig.7a of the paper.     Auto-defined models, grid search through model training runtime.  Fastplot callback for generating the second part of Fig.7a of the paper.  Auto-defined models, grid search through model training runtime. <br>
+Fastplot callback for generating the second part of Fig.9a of the paper.     Auto-defined models, grid search through model training runtime.  <br>
 
 #### Parameters<br>
 
@@ -462,12 +461,12 @@ Fastplot callback for generating the second part of Fig.7a of the paper.     Aut
 ___
 
 ```
-fig7b1(plt, heatmaps, Vs, Cs)
+fig9b1(plt, heatmaps, Vs, Cs)
 ```
 
 
 
-Fastplot callback for generating the first part of Fig.7b of the paper.     Per-service models, grid search through accuracy.      Fastplot callback for generating the first part of Fig.7b of the paper.  Per-service models, grid search through accuracy. <br>
+Fastplot callback for generating the first part of Fig.9b of the paper.     Per-service models, grid search through accuracy.<br>
 
 #### Parameters<br>
 
@@ -482,12 +481,12 @@ Fastplot callback for generating the first part of Fig.7b of the paper.     Per-
 ___
 
 ```
-fig7b2(plt, heatmaps_time, Vs, Cs)
+fig9b2(plt, heatmaps_time, Vs, Cs)
 ```
 
 
 
-Fastplot callback for generating the second part of Fig.7b of the paper.     Per-service models, grid search through accuracy.  Fastplot callback for generating the second part of Fig.7b of the paper.  Per-service models, grid search through accuracy. <br>
+Fastplot callback for generating the second part of Fig.9b of the paper.     Per-service models, grid search through accuracy.   <br>
 
 #### Parameters<br>
 
@@ -502,12 +501,12 @@ Fastplot callback for generating the second part of Fig.7b of the paper.     Per
 ___
 
 ```
-fig9(plt, ncs, mods)
+fig11(plt, ncs, mods)
 ```
 
 
 
-Fastplot callback for generating Fig.9 of the paper.     Impact of k' in cluster detection.  Fastplot callback for generating Fig.9 of the paper.  Impact of k' in cluster detection. <br>
+Fastplot callback for generating Fig.11 of the paper.     Impact of k' in cluster detection.  <br>
 
 #### Parameters<br>
 
@@ -520,12 +519,12 @@ Fastplot callback for generating Fig.9 of the paper.     Impact of k' in cluster
 ___
 
 ```
-fig10(plt, shs)
+fig12(plt, shs)
 ```
 
 
 
-Fastplot callback for generating Fig.10 of the paper.     Average silhouette of points within the found clusters.  Fastplot callback for generating Fig.10 of the paper.  Average silhouette of points within the found clusters. <br>
+Fastplot callback for generating Fig.12 of the paper.     Average silhouette of points within the found clusters.  <br>
 
 #### Parameters<br>
 
@@ -536,12 +535,12 @@ Fastplot callback for generating Fig.10 of the paper.     Average silhouette of 
 ___
 
 ```
-fig11(plt, clusters, tick)
+fig13(plt, clusters, tick)
 ```
 
 
 
-Fastplot callback for generating Fig.11 of the paper.     Activity patterns of Censys sub-clusters.  Fastplot callback for generating Fig.11 of the paper.  Activity patterns of Censys sub-clusters. <br>
+Fastplot callback for generating Fig.13 of the paper.     Activity patterns of Censys sub-clusters.  <br>
 
 #### Parameters<br>
 
@@ -554,12 +553,12 @@ Fastplot callback for generating Fig.11 of the paper.     Activity patterns of C
 ___
 
 ```
-fig12(plt, clusters)
+fig14(plt, clusters)
 ```
 
 
 
-Fastplot callback for generating Fig.12 of the paper.     Activity patterns of Shadowserver sub-clusters.  Fastplot callback for generating Fig.12 of the paper.  Activity patterns of Shadowserver sub-clusters. <br>
+Fastplot callback for generating Fig.14 of the paper.     Activity patterns of Shadowserver sub-clusters.  <br>
 
 #### Parameters<br>
 
@@ -572,7 +571,6 @@ ___
 ```
 plot_censys_jaccard(plt, jacc)
 ```
-
 
 
 Fastplot callback for generating the jaccard heatmap. It represents the     jaccard index between the ports contacted by the censys found sub-clusters  Fastplot callback for generating the jaccard heatmap. It represents the  jaccard index between the ports contacted by the censys found sub-clusters <br>
@@ -614,6 +612,40 @@ Fastplot callback for plotting the pattern of the ports contacted by     IPs bel
 - **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br>
 
 - **clusters_** *(pandas.DataFrame)*: set of destination ports timeseries per source IP
+
+___
+
+```
+ground_truth_heatmap(plt, pivot)
+```
+
+
+ 
+Generate the heatmap with the fraction of packets per service for each     ground truth class  Generate the heatmap with the fraction of packets per service for each  ground truth class <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **pivot** *(pandas.DataFrame)*: data to plot
+
+___
+
+```
+clustering_baseline(plt, df)
+```
+
+
+ 
+Heatmap of ground truth w.r.t. assigned labels after supervised      clustering  Heatmap of ground truth w.r.t. assigned labels after supervised clustering <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **df** *(pandas.DataFrame)*: data to plot
+
+
 
 ## `src.knngraph` <a id='srcknngraph'></a>
 
@@ -1199,7 +1231,37 @@ build_dataset_from_raw(raw_df, top_k_ports)
 
 <br> 
  
-Run the full baseline pipeline starting from raw data, extracting      features and generating the final dataset  
+Run the f___
+
+```
+ground_truth_heatmap(plt, pivot)
+```
+
+
+ 
+Generate the heatmap with the fraction of packets per service for each     ground truth class  Generate the heatmap with the fraction of packets per service for each  ground truth class <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **pivot** *(pandas.DataFrame)*: data to plot
+
+___
+
+```
+clustering_baseline(plt, df)
+```
+
+
+ 
+Heatmap of ground truth w.r.t. assigned labels after supervised      clustering  Heatmap of ground truth w.r.t. assigned labels after supervised clustering <br>
+
+#### Parameters<br> 
+
+- **plt** *(matplotlib.pyplot)*: matplotlib instance for fastplot callback<br> 
+
+- **df** *(pandas.DataFrame)*: data to plotull baseline pipeline starting from raw data, extracting      features and generating the final dataset  
 <br>
 
 #### Parameters<br> 
