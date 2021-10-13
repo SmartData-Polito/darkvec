@@ -71,11 +71,16 @@ source darkvec-env/bin/activate
 
 `pip3 install -r requirements.txt`
 
+<!--
 8. For plotting figures, install the required fonts (assuming Debian-like Linux):
 
 `sudo apt install dvipng texlive-latex-extra texlive-fonts-recommended cm-super`
 
 9. Run the notebooks described next. For example, to run the first notebook:
+
+`jupyter-lab 01-darknet-overview.ipynb`
+-->
+8. Run the notebooks described next. For example, to run the first notebook:
 
 `jupyter-lab 01-darknet-overview.ipynb`
 
