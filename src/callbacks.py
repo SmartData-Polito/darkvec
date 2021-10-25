@@ -99,7 +99,7 @@ def fig2b(plt, cdf, cdf_f):
     plt.plot(cdf_f, linewidth=.8, marker='s', markersize=4, label='Filtered')
     plt.grid(linestyle='--')
     plt.yscale('log')
-    plt.xlabel('$\Delta T$ [day]')
+    plt.xlabel('$Delta T$ [day]')
     plt.ylabel('Distinct IP addresses')
     plt.xticks([0, 4, 9, 14, 19, 24, 29], [1, 5, 10, 15, 20, 25, 30])
     plt.legend()
@@ -168,7 +168,7 @@ def fig7(plt, gs_train_window):
     plt.xlim(.5, 30.5)
     plt.xticks([1, 5, 10, 20, 30])
     plt.xlabel('Training window size')
-    plt.ylabel('Coverage [\%]')
+    plt.ylabel('Coverage [%]')
     
 def fig8(plt, knn_accs):
     """Fastplot callback for generating Fig.8 of the paper.
@@ -551,7 +551,7 @@ def clustering_baseline(plt, df):
         new_idx[x] = x1.capitalize()
 
     sns.heatmap(df.rename(index=new_idx), cmap='coolwarm', 
-                cbar_kws={'label':'GT points per cluster [\%]'}, vmin=0)
+                cbar_kws={'label':'GT points per cluster [%]'}, vmin=0)
 
     plt.xlabel('Assigned Cluster')
     plt.ylabel('True Label')

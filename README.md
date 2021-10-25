@@ -33,7 +33,7 @@ Notice that this repository has already been updated to include novel experiment
 ___
 ## <b> How to reproduce results in the paper?</b> <a id='howto'></a>
 
-Note: This guide assumes a Linux operating system (tested on Ubuntu 20.04).
+Note: This guide assumes a Debian-like system (tested on Ubuntu 20.04 & Debian 11).
 
 1. Clone this repository
 2. Download the two gzip files from: https://datacloud.di.unito.it/index.php/s/2Yq6Yd3pWdZn2HQ
