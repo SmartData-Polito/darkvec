@@ -2,11 +2,9 @@
 
 In this repository we report all artifacts for experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_. The current version is _v2_ after the paper review. in the [changelog](#changelog) session the main changes are reported.
 ___
-***Note:*** All source code and data we provide are the ones included in the paper. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. To speed up the notebook execution, by default we trim the file loading.
+***Note:*** All source code and data we provide are the ones included in the paper. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. 
 
-Please, note that when running the code without starting from the provided intermediate files, or because of random seeds used in third-party libraries, some results may slightly chage from one run to another. The general trends observed in the paper are however stable.
-
-Notice that this repository has already been updated to include novel experiments and some changes requested by the reviewers. More changes will be included in the coming weeks to reflect the camera-ready version.
+Please, note that when running the code, because of random seeds used in third-party libraries, some results may slightly chage from one run to another. The general trends observed in the paper are however stable.
 
 ## <b>Table Of Content</b> <a id='toc'></a>
 
@@ -36,16 +34,10 @@ ___
 Note: This guide assumes a Debian-like system (tested on Ubuntu 20.04 & Debian 11).
 
 1. Clone this repository
-2. Download the two gzip files from: https://datacloud.di.unito.it/index.php/s/2Yq6Yd3pWdZn2HQ
+2. Download the two gzip files from: https://mplanestore.polito.it:5001/sharing/3cBHvHD5h
 
-A password is required to download the traces above. For now, this password has
-been shared only with CoNEXT TPC members to allow them to check reproducibility.
-CoNEXT TPC members have been asked to use the data only for their evaluation.
-
-A public dataset will be released soon, where IP addresses are anonymized.
-The reason for this anonymization step is that some IP addresses sending traffic
-to the darknet can be victims of attacks, such as people that have the PC hacked
-and take part on scan activity without their knowledge.
+Source IP addresses are anonymized. The reason for this anonymization step is that some IP addresses sending traffic
+to the darknet can be victims of attacks, such as people that have the PC hacked and take part on scan activity without their knowledge.
 
 
 3. Unzip the coNEXT.tar.gz file into a subfolder of this repository called `coNEXT`
@@ -71,22 +63,18 @@ source darkvec-env/bin/activate
 
 `pip3 install -r requirements.txt`
 
-<!--
-8. For plotting figures, install the required fonts (assuming Debian-like Linux):
-
-`sudo apt install dvipng texlive-latex-extra texlive-fonts-recommended cm-super`
-
-9. Run the notebooks described next. For example, to run the first notebook:
-
-`jupyter-lab 01-darknet-overview.ipynb`
--->
-8. Run the notebooks described next. For example, to run the first notebook:
-
-`jupyter-lab 01-darknet-overview.ipynb`
+8. Run the notebooks. 
 
 Note that the `raw` data is used to create the intermediate datasets in the `coNEXT` folder.
 Notebooks are provided (as Appendix) for this step. Given the size of the raw traces a
 spark cluster is recommended for this step.
+
+Once the models and intermediate data are created in the `coNEXT` folder, 
+run the other notebooks that produce the results in the paper. 
+For example, to run the first notebook:
+
+`jupyter-lab 01-darknet-overview.ipynb`
+
 
 10. When the notebook exploration is ended, remember to deactivate the virtual environment:
 
@@ -123,7 +111,7 @@ They can be reproduced with the following notebooks:
 
 * `A01-corpus-generation.ipynb`: Appendix1. Code used for generating the
 corpus of the experiments. Ideally, it should be run on a Spark cluster.
-The provided notebook is steup for spark stand-alone, which is not scalable;
+The provided notebook is setup for spark stand-alone, which is not scalable;
 * `A02-model-training.ipynb`: Appendix2. Training of the models used in the
 paper (requires Gensim);
 * `A03-darknet-interim`: Appendix3. Some intermediate preprocessing. To
@@ -246,7 +234,7 @@ testing of k for the knn graph;
 
 
 It contains the gorund truth we generated in `lsground_truth_full.csv.gz`. It
-is a collection of IP addresses with the respective label. The label may be
+is a collection of (anonymized) IP addresses with the respective label. The label may be
 like `sonar` if the IP belongs to the Project Sonar, `shodan` if it belongs to
 the Shodan pool.
 
