@@ -1,14 +1,3 @@
-gensim==3.8.0
-sklearn
+gensim==4.2.0
 pandas
 numpy
-kneed
-keras
-tensorflow
-networkx==2.5
-python-louvain
-seaborn
-fastplot
-jupyterlab
-findspark
-pyspark==3.0.2
