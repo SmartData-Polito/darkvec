@@ -1,5 +1,5 @@
-# <b>DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings</b>
-
+# <b>iDarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings</b>
+# <b> TBD </b>
 In this repository we report all artifacts for experiments of the paper _DarkVec: Automatic Analysis of Darknet Traffic with Word Embeddings_. The current version is _v2_ after the paper review. in the [changelog](#changelog) session the main changes are reported.
 ___
 ***Note:*** All source code and data we provide are the ones included in the paper. We provide the source code and a description for generating the intermediate preprocessing files with the obtained results. 
