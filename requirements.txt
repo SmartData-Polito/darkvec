@@ -1,3 +1,0 @@
-gensim==4.2.0
-pandas
-numpy
