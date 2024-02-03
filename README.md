@@ -38,12 +38,9 @@ Note: This guide assumes a Debian-like system (tested on Ubuntu 20.04 & Debian 1
 1. Clone this repository
 2. Download the two gzip files from: https://datacloud.di.unito.it/index.php/s/2Yq6Yd3pWdZn2HQ
 
-A password is required to download the traces above. For now, this password has
-been shared only with CoNEXT TPC members to allow them to check reproducibility.
-CoNEXT TPC members have been asked to use the data only for their evaluation.
-
-A public dataset will be released soon, where IP addresses are anonymized.
-The reason for this anonymization step is that some IP addresses sending traffic
+A password is required to download the traces above. Contact the authors in case you 
+want to have access to the data. 
+The reason for this protection is that some IP addresses sending traffic
 to the darknet can be victims of attacks, such as people that have the PC hacked
 and take part on scan activity without their knowledge.
 
