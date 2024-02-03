@@ -36,7 +36,7 @@ ___
 Note: This guide assumes a Debian-like system (tested on Ubuntu 20.04 & Debian 11).
 
 1. Clone this repository
-2. Download the two gzip files from: https://datacloud.di.unito.it/index.php/s/2Yq6Yd3pWdZn2HQ
+2. Download the two gzip files from: https://mplanestore.polito.it:5001/sharing/3cBHvHD5h
 
 A password is required to download the traces above. Contact the authors in case you 
 want to have access to the data. 
